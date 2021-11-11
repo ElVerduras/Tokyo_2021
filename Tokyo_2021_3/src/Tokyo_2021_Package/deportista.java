@@ -1,12 +1,12 @@
 package Tokyo_2021_Package;
 
 public class deportista {
-	String nombre;
-	String apellido;
-	String email;
-	int telefono;
-	String pais; //pais y disciplina hay que darles un tipo segun la base de datos
-	String disciplina;
+	private String nombre;
+	private String apellido;
+	private String email;
+	private int telefono;
+	private String pais; //pais y disciplina hay que darles un tipo segun la base de datos
+	private String disciplina;
 	
 	
 	public deportista(String nombre, String apellido, String email, int telefono, String pais, String disciplina) {
