@@ -1,9 +1,13 @@
 package Tokyo_2021_Package;
 
-public class pais {
-	String nombre;
+public class Pais {
+	private String nombre;
 
-	public pais(String nombre) {
+	public Pais() {
+		
+	}
+	
+	public Pais(String nombre) {
 		super();
 		this.nombre = nombre;
 	}
