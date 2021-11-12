@@ -1,6 +1,6 @@
 package Tokyo_2021_Package;
 
-public class deportista {
+public class Deportista{
 	private String nombre;
 	private String apellido;
 	private String email;
@@ -8,8 +8,11 @@ public class deportista {
 	private String pais; //pais y disciplina hay que darles un tipo segun la base de datos
 	private String disciplina;
 	
+	public Deportista() {
+		
+	}
 	
-	public deportista(String nombre, String apellido, String email, int telefono, String pais, String disciplina) {
+	public Deportista(String nombre, String apellido, String email, int telefono, String pais, String disciplina) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -59,8 +62,7 @@ public class deportista {
 	
 	@Override
 	public String toString() {
-		return "deportista [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono
-				+ ", pais=" + pais + ", disciplina=" + disciplina + "]";
+		return "'" + apellido + "', '" + nombre + "', '" + email + "', '" + telefono + "'";
 	}
 	
 	
