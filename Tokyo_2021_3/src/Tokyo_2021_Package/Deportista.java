@@ -4,15 +4,15 @@ public class Deportista{
 	private String nombre;
 	private String apellido;
 	private String email;
-	private int telefono;
-	private String pais; //pais y disciplina hay que darles un tipo segun la base de datos
+	private String telefono;
+	private int pais; //pais y disciplina hay que darles un tipo segun la base de datos
 	private String disciplina;
 	
 	public Deportista() {
 		
 	}
 	
-	public Deportista(String nombre, String apellido, String email, int telefono, String pais, String disciplina) {
+	public Deportista(String nombre, String apellido, String email, String telefono, int pais, String disciplina) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -40,16 +40,16 @@ public class Deportista{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getPais() {
+	public int getPais() {
 		return pais;
 	}
-	public void setPais(String pais) {
+	public void setPais(int pais) {
 		this.pais = pais;
 	}
 	public String getDisciplina() {
@@ -62,7 +62,7 @@ public class Deportista{
 	
 	@Override
 	public String toString() {
-		return "'" + apellido + "', '" + nombre + "', '" + email + "', '" + telefono + "'";
+		return "'" + apellido + "', '" + nombre + "', '" + email + "', '" + telefono + "', '" + pais + "'";
 	}
 	
 	
