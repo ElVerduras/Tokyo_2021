@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class MyConnection {
 	
-	private static String user = "admin";
+	private static String user = "root";
 	private static String pasword = "1234";
 	
 	private static Connection con = null;
@@ -17,7 +17,7 @@ public class MyConnection {
 	static {
 		
 		try {		      
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tokyo2021_3",user, pasword);		      		      
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tokyo2021_e3",user, pasword);		      		      
 		}catch (SQLException e) {			
 			System.out.println("no se pudo conectar a la BD");
 		    e.printStackTrace();		    

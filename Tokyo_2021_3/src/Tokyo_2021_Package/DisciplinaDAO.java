@@ -4,12 +4,12 @@ import java.util.List;
 
 interface DisciplinaDAO {
 	
-	public String find(String id);
+	public String find(int id);
 	
-	public List<String> load();
+	public List<Disciplina> load();
 	
-	public void delete(String nombre);
+	public void delete(Disciplina nombre);
 	
-	public void save(String nombre);
+	public void save(Disciplina nombre);
 
 }

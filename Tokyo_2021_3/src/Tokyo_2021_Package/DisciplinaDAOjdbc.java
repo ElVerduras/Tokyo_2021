@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DisciplinaDAOjdbc implements DisciplinaDAO {
 	
-	public String find(String id) {
+	public String find(int id) {
 		 String nombreDisciplina = null;
 		 try{
 			 Connection con = MyConnection.getCon();
@@ -26,18 +26,20 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 		 return nombreDisciplina;
 	}
 
-	public List<String> load(){
-		 String nombreDisciplina = null;
-		 List<String> listaNombreDisciplina = new ArrayList<String>();
+	public List<Disciplina> load(){
+		 Disciplina disciplina = null;
+		 ArrayList<Disciplina> listaNombreDisciplina = new ArrayList<Disciplina>();
 		 
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select * from pais ");
+			 ResultSet rs= st.executeQuery("Select * disciplina ");
 			 while (rs.next()==true) {
-				 nombreDisciplina = rs.getString(1);
-
-				 listaNombreDisciplina.add(nombreDisciplina);
+				 disciplina.setNombre(rs.getString(1));
+				 disciplina.setDeportista(0);
+				 disciplina.setId(rs.getInt(0));
+				 
+				 listaNombreDisciplina.add(disciplina);
 			 }
 			 rs.close();
 			 st.close();
@@ -49,13 +51,13 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 
 	}
 	
-	public void delete(String nombre) {
+	public void delete(Disciplina nombre) {
 		 
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("Delete a from pais where a.nombre='"+nombre+"'");
+			 ResultSet rs= st.executeQuery("Delete a from deportista_en_disciplina where (a.id_disciplina='"+nombre.getId()+"', && a.id_deportista='"+nombre.getDeportista()+"')");
 			 
 			 rs.close();
 			 st.close();
@@ -66,12 +68,12 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 		
 	}
 	
-	public void save(String nombre) {
+	public void save(Disciplina nombre) {
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("INSERT INTO disciplina(nombres) VALUES (" + nombre + ")");
+			 ResultSet rs= st.executeQuery("INSERT INTO deportista_en_disciplina(id_deportista,id_disciplina) VALUES (" + nombre.getDeportista() +", "+nombre.getId()+ ")");
 			 
 			 rs.close();
 			 st.close();
