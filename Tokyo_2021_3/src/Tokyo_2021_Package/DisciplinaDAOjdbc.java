@@ -30,7 +30,8 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 }
 			 rs1.close();
 			 st.close();
-			 con.close();
+			 if (con != null)
+				 con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
