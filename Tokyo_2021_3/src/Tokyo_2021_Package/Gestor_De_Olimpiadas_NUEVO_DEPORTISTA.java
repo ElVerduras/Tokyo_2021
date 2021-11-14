@@ -1,8 +1,17 @@
 package Tokyo_2021_Package;
+
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.FlowLayout;
+
+//import com.sun.tools.javac.util.List;
+
+//import jdk.tools.jlink.internal.Jlink;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
+
 
 public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	private static JLabel Label_Name; 
@@ -17,6 +26,15 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	private static JLabel Label_Number_Phone; 
 	private static JTextField Text_Number_Phone;
 	
+	private static JLabel Label_Country;
+	private static  JList<String> Country=new JList();
+ 	static String[] Country_Str;
+	
+	private static JLabel Label_Discipline; 
+ 	static JComboBox<String> Discipline;
+ 	static String[] Discipline_Str;
+ 	
+ 	private static DefaultListModel modelo = new DefaultListModel();
 	private static JButton Save;
 
 	public static void create(JFrame frame) {		 		
@@ -60,10 +78,28 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 				
 				    frame.getContentPane().add(Label_Number_Phone);
 				    frame.getContentPane().add(Text_Number_Phone);
+				    
+					 Label_Country = new JLabel("PAÍS: ");
+					 Label_Country.setBounds(100,160,60,20);
+					 frame.getContentPane().add(Label_Country);
+					 String[] ars={ "nombre1","apellidp","disciplina" };
+					 for(String ar: ars) {
+						modelo.addElement(ar);
+					 }
+					Country.setModel(modelo);
+					Country.setVisibleRowCount(ars.length);
+					Country.getSelectedValue();
+					frame.getContentPane().add(Country);
+					add(new JScrollPane(Country));
+  						
+					Label_Discipline =new JLabel("DISCIPLINA: "); 
+					Label_Discipline.setBounds(100,180,60,20);
+					frame.getContentPane().add(Label_Discipline);
+ 					 
 		    //BENINNG SAVE
 			Save = new JButton("GUARDAR");
 		    frame.getContentPane().add(Save);
-		    Save.setBounds(220,200,120,20);
+		    Save.setBounds(200,200,120,20);
 		    //END SAVE
 		  //BEGINNING SET UP SAVE
 		    Save.addActionListener( new ActionListener(){
@@ -88,6 +124,11 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	        //END  SET UP SAVE
 }
  
+	private static void add(JScrollPane jScrollPane) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas - NUEVO DEPORTISTA");
 		Window.setBounds(100, 100, 520, 300);

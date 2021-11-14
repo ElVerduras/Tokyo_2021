@@ -76,9 +76,9 @@ public class PaisDAOjdbc implements PaisDAO{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("INSERT INTO pais(nombres) VALUES (" + p.getNombre() + ")");
+			 int rs= st.executeUpdate("INSERT INTO pais(nombre) VALUES ('" + p.getNombre() + "')");
 			 
-			 rs.close();
+			 //rs.close();
 			 st.close();
 			 con.close();
 		 } catch (java.sql.SQLException e) {

@@ -1,8 +1,11 @@
 package Tokyo_2021_Package;
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Gestor_De_Olimpiadas_PAIS {
 
@@ -38,7 +41,33 @@ public class Gestor_De_Olimpiadas_PAIS {
 									 }
 						 		 }); 
 		//END  SET UP RETURN
-			}
+        
+      //JTable estructura
+	       JTable tabla = new JTable();
+	       String[] encabezado = {"paises"};
+	       String [] aCargar = new String[1];
+	       DefaultTableModel modelo = new DefaultTableModel(encabezado, 0);
+	       
+	      //JTable datos a mostrar
+	       //List<Pais> temporal = new PaisDAOjdbc().getListaDeportistas();
+	      /* 
+	       for (int i = 0; i< temporal.size(); i++) {
+	    	   aCargar[0] = temporal.get(i).getNombres();
+	    	   System.out.println("Llegue hasta aca");
+	    	   System.out.println(temporal.get(i).getApellido());
+	    	   modelo.addRow(aCargar);
+	    	   
+	       }
+	       tabla.setModel(modelo);
+	       Container contentPane;
+		//tabla.setBounds(15,120,500,160);
+	       //this.getContentPane().add(new JScrollPane(tabla), BorderLayout.SOUTH );
+	       //this.setVisible(true);
+	       contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
+	       this.pack();
+	       this.setVisible(true);
+	   }
+			*/}
 			
 
 			public String[] Listado(){

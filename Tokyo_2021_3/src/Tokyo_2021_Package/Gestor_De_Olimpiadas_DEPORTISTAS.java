@@ -1,15 +1,12 @@
 package Tokyo_2021_Package;
-import java.awt.FlowLayout;
-import java.awt.Label;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;  
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Gestor_De_Olimpiadas_DEPORTISTAS {
-	private JTable Table = new JTable();
-  	private JPanel Panel_Buttons = new JPanel();
+
 	//private String[] Title_Table2 = {"Nombre y Apellido","País","Disciplina"};
 	
 	public static void create(JFrame frame) {
@@ -56,7 +53,38 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
         Title_Table.setHorizontalTextPosition(SwingConstants.CENTER);
         frame.getContentPane().add(Title_Table);
         //VISUALIZACION DE TABLA DEPORTISTAS
-	}
+        
+      //JTable estructura
+	       JTable tabla = new JTable();
+	       String[] encabezado = {"deportistas"};
+	       String [] aCargar = new String[1];
+	       DefaultTableModel modelo = new DefaultTableModel(encabezado, 0);
+	       
+	       //JTable datos a mostrar
+	       /*List<Deportista> temporal = new DeportistaDAOjdbc().getListaDeportistas();
+	       
+	       for (int i = 0; i< temporal.size(); i++) {
+	    	   aCargar[0] = temporal.get(i).getNombres();
+	    	   System.out.println("Llegue hasta aca");
+	    	   System.out.println(temporal.get(i).getApellido());
+	    	   modelo.addRow(aCargar);
+	    	   
+	       }
+	       tabla.setModel(modelo);
+	       Container contentPane;
+		//tabla.setBounds(15,120,500,160);
+	       //this.getContentPane().add(new JScrollPane(tabla), BorderLayout.SOUTH );
+	       //this.setVisible(true);
+	       contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
+	       //contentPane.add(new JScrollPane(volver));
+	       //contentPane.add(new JScrollPane(nuevo), BorderLayout.NORTH);
+	       //contentPane.add(new JScrollPane(exportar), BorderLayout.NORTH);
+	       this.pack();
+	       this.setVisible(true);
+	       */
+	   }
+	
+	
 	
 
 	public String[] Listado(){
