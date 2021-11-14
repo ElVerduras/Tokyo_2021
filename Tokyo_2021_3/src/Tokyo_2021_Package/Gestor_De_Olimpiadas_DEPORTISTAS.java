@@ -30,6 +30,10 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
         Button_Export.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Export.setHorizontalTextPosition(SwingConstants.CENTER);
         frame.getContentPane().add(Button_Export);
+        Button_Export.addActionListener(
+        		Button_Export
+        );
+        Generar_CSV
         //VOLVER
         JButton Button_Return = new JButton("VOLVER");
 		Button_Return.setBounds(440,20,100,50);

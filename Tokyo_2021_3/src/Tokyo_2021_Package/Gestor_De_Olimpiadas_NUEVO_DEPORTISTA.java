@@ -2,6 +2,7 @@ package Tokyo_2021_Package;
 
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.Component;
 import java.awt.FlowLayout;
 
 //import com.sun.tools.javac.util.List;
@@ -27,15 +28,17 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	private static JTextField Text_Number_Phone;
 	
 	private static JLabel Label_Country;
-	private static  JList<String> Country=new JList();
- 	static String[] Country_Str;
-	
-	private static JLabel Label_Discipline; 
- 	static JComboBox<String> Discipline;
- 	static String[] Discipline_Str;
+	static String[] Country_Str={ "nombre1","apellidp","disciplina" };
+	static DefaultComboBoxModel<String> Country_model=new  DefaultComboBoxModel<String>(Country_Str);
+	static JComboBox<String> Country = new JComboBox<String>(Country_model);
+
  	
- 	private static DefaultListModel modelo = new DefaultListModel();
-	private static JButton Save;
+ 	private static JLabel Label_Discipline;
+	static String[] Discipline_Str={ "corre","corazon","disciplina" };
+	static DefaultComboBoxModel<String> Discipline_model=new  DefaultComboBoxModel<String>(Discipline_Str);
+	static JComboBox<String> Discipline = new JComboBox<String>(Discipline_model);
+ 	
+ 	private static JButton Save;
 
 	public static void create(JFrame frame) {		 		
 			//NAME
@@ -81,21 +84,18 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 				    
 					 Label_Country = new JLabel("PAÍS: ");
 					 Label_Country.setBounds(100,160,60,20);
-					 frame.getContentPane().add(Label_Country);
-					 String[] ars={ "nombre1","apellidp","disciplina" };
-					 for(String ar: ars) {
-						modelo.addElement(ar);
-					 }
-					Country.setModel(modelo);
-					Country.setVisibleRowCount(ars.length);
-					Country.getSelectedValue();
+					 frame.getContentPane().add(Label_Country);	 
+					 Country.setBounds(200,160,240,20);
 					frame.getContentPane().add(Country);
-					add(new JScrollPane(Country));
+
   						
-					Label_Discipline =new JLabel("DISCIPLINA: "); 
-					Label_Discipline.setBounds(100,180,60,20);
+					Label_Discipline =new JLabel("DISCIPLINA:"); 
+					Label_Discipline.setBounds(90,180,60,20);
 					frame.getContentPane().add(Label_Discipline);
- 					 
+					Discipline.setBounds(200,180,240,20);
+					frame.getContentPane().add(Discipline);
+
+					
 		    //BENINNG SAVE
 			Save = new JButton("GUARDAR");
 		    frame.getContentPane().add(Save);
