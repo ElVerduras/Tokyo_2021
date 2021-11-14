@@ -1,11 +1,12 @@
 package Tokyo_2021_Package;
-import java.awt.FlowLayout;
-import java.awt.Label;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;  
+import java.awt.*;
+
+
 import javax.swing.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	private JTable Table = new JTable();
@@ -49,20 +50,42 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 							 }
 				 		 }); 
 				        //END  SET UP RETURN
+        
+        
         //BARRA DE TITULO DEPORTISTAS
         JLabel Title_Table = new JLabel(" Deportistas ");
         Title_Table.setBounds(160,20,360,75);
         Title_Table.setVerticalTextPosition(SwingConstants.BOTTOM);
         Title_Table.setHorizontalTextPosition(SwingConstants.CENTER);
         frame.getContentPane().add(Title_Table);
+        
         //VISUALIZACION DE TABLA DEPORTISTAS
+        
+        String[] encabezado = {"deportistas"};
+	    String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
+	    
+	    List<Deportista> listaDeportista = FactoryDAO.getDeportistaDAO().load();
+	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
+	    DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
+	    Pais pais = new Pais();
+	    for (int i = 0; i< listaDeportista.size(); i++) {
+	    	   aCargar[0] = listaDeportista.get(i).getApellido();
+	    	   System.out.println("Llegue hasta aca");
+	    	   System.out.println(listaDeportista.get(i).getApellido());
+	    	   pais = pais_bbdd.find(listaDeportista.get(i).getPais());
+	    	   aCargar[1] = pais.getNombre();
+	    	   System.out.println(pais.getNombre());
+	    	   aCargar[2] = disciplina_bbdd.find(listaDeportista.get(i).getId());
+	    	   System.out.println(aCargar[2]);
+	    }
 	}
 	
 
 	public String[] Listado(){
 		String[] Cadena = null;
 		 
-	return Cadena;}
+	return Cadena;
+	}
 	
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas - DEPORTISTAS ");

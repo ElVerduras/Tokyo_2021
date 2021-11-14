@@ -70,7 +70,17 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	        	@Override
 	 			 public void actionPerformed(ActionEvent e) {
 	        		//BEGINNING SET UP ACCION´S 
+	        		Deportista d = new Deportista();
+	        		DeportistaDAO d_bbdd = FactoryDAO.getDeportistaDAO();
+	        		d.setNombre(Text_Name.getText());
+	        		d.setApellido(Text_Last_Name.getText());
+	        		d.setEmail(Text_Email.getText());
+	        		d.setTelefono(Text_Number_Phone.getText());
+	        		//Hay que agregar el desplegable de seleccion de pais
+	        		int a = 1;
+	        		d.setPais(a);
 	        		//MODIFICATION BBDD
+	        		d_bbdd.save(d);
 	    	        //END  SET UP ACCION´S 
 	        		frame.dispose();
 				 }

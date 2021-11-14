@@ -1,22 +1,25 @@
 package Tokyo_2021_Package;
 
-public class deportista {
+public class Deportista{
 	private String nombre;
 	private String apellido;
 	private String email;
-	private int telefono;
-	private String pais; //pais y disciplina hay que darles un tipo segun la base de datos
-	private String disciplina;
+	private String telefono;
+	private int pais; 
+	private int id;
 	
+	public Deportista() {
+		
+	}
 	
-	public deportista(String nombre, String apellido, String email, int telefono, String pais, String disciplina) {
+	public Deportista(String nombre, String apellido, String email, String telefono, int pais, int id) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
 		this.pais = pais;
-		this.disciplina = disciplina;
+		this.id = id;
 	}
 	
 	public String getNombre() {
@@ -37,30 +40,29 @@ public class deportista {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getPais() {
+	public int getPais() {
 		return pais;
 	}
-	public void setPais(String pais) {
+	public void setPais(int pais) {
 		this.pais = pais;
 	}
-	public String getDisciplina() {
-		return disciplina;
+	public int getId() {
+		return id;
 	}
-	public void setDisciplina(String disciplina) {
-		this.disciplina = disciplina;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "deportista [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono
-				+ ", pais=" + pais + ", disciplina=" + disciplina + "]";
+		return "'" + apellido + "', '" + nombre + "', '" + email + "', '" + telefono + "', '" + pais + "'";
 	}
 	
 	

@@ -34,12 +34,21 @@ public class Gestor_De_Olimpiadas_NUEVO_PAIS {
         	@Override
  			 public void actionPerformed(ActionEvent e) {
         		//BEGINNING SET UP ACCION´S 
+        		Pais p = new Pais();
+        		PaisDAOjdbc p_ddbb = new PaisDAOjdbc();
+        		
+        		p.setNombre(Text_Name.getText());
+        		
         		//MODIFICATION BBDD
+        		p_ddbb.save(p);
+        		
     	        //END  SET UP ACCION´S 
         		frame.dispose();
 			 }
  		 }); 
         //END  SET UP SAVE
+	    
+	    
         
 	 }
 

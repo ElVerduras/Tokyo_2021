@@ -13,8 +13,8 @@ public class Gestor_De_Olimpiadas_PAIS {
 		Button_New.setVerticalTextPosition(SwingConstants.BOTTOM);
 	    Button_New.setHorizontalTextPosition(SwingConstants.CENTER);
 		frame.getContentPane().add(Button_New);
-		//BEGINNING SET UP RETURN
-		Button_New.addActionListener( new ActionListener(){
+					//BEGINNING SET UP RETURN
+					Button_New.addActionListener( new ActionListener(){
 					        	@Override
 					 			 public void actionPerformed(ActionEvent e) {
 					        		Gestor_De_Olimpiadas_NUEVO_PAIS.createWindow();
