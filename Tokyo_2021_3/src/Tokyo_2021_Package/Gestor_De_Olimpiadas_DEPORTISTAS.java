@@ -76,7 +76,8 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    	   aCargar[1] = pais.getNombre();
 	    	   System.out.println(pais.getNombre());
 	    	   aCargar[2] = disciplina_bbdd.find(listaDeportista.get(i).getId());
-	    	   System.out.println(aCargar[2]);
+	    	   System.out.println(aCargar[2]); 
+	    	   
 	    }
 	}
 	
