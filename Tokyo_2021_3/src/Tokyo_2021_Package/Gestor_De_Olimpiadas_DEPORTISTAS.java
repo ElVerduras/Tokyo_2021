@@ -68,7 +68,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
 	    Pais pais = new Pais();
-	    for (int i = 0; i< listaDeportista.size(); i++) {
+	    /*for (int i = 0; i< listaDeportista.size(); i++) {
 	    	   aCargar[0] = listaDeportista.get(i).getApellido();
 	    	   System.out.println("Llegue hasta aca");
 	    	   System.out.println(listaDeportista.get(i).getApellido());
@@ -78,7 +78,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    	   aCargar[2] = disciplina_bbdd.find(listaDeportista.get(i).getId());
 	    	   System.out.println(aCargar[2]); 
 	    	   
-	    }
+	    }*/
 	}
 	
 
