@@ -3,9 +3,9 @@ package Tokyo_2021_Package;
 import java.util.Arrays;
 
 public class Disciplina {
-	private int id;
-	private String nombre;
-	private int deportista;
+	private int id;//id_disciplina (bbdd-->deportista en disciplina) y (bbdd-->disciplina) 
+	private String nombre;//nombere (bbdd-->disciplina)
+	private int deportista;//id_deportista (bbdd-->deportista en disciplina)
 	
 	public Disciplina() {}
 	public Disciplina(int id, String nombre, int deportista) {

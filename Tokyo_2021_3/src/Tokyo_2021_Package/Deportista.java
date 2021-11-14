@@ -5,21 +5,21 @@ public class Deportista{
 	private String apellido;
 	private String email;
 	private String telefono;
-	private int pais; //pais y disciplina hay que darles un tipo segun la base de datos
-	private String disciplina;
+	private int pais; 
+	private int id;
 	
 	public Deportista() {
 		
 	}
 	
-	public Deportista(String nombre, String apellido, String email, String telefono, int pais, String disciplina) {
+	public Deportista(String nombre, String apellido, String email, String telefono, int pais, int id) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
 		this.pais = pais;
-		this.disciplina = disciplina;
+		this.id = id;
 	}
 	
 	public String getNombre() {
@@ -52,11 +52,11 @@ public class Deportista{
 	public void setPais(int pais) {
 		this.pais = pais;
 	}
-	public String getDisciplina() {
-		return disciplina;
+	public int getId() {
+		return id;
 	}
-	public void setDisciplina(String disciplina) {
-		this.disciplina = disciplina;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

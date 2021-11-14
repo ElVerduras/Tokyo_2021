@@ -4,7 +4,7 @@ import java.util.List;
 
 interface PaisDAO {
 
-	public Pais find(String id);
+	public Pais find(int id);
 	
 	public List<Pais> load();
 	

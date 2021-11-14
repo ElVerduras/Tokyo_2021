@@ -8,19 +8,19 @@ import java.util.List;
 
 public class PaisDAOjdbc implements PaisDAO{
 	
-	public Pais find(String id) {
+	public Pais find(int id) {
 		 Pais pais = null;
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select d from pais where d.id='"+id+"'");
+			 ResultSet rs= st.executeQuery("Select * from pais where id='"+id+"'");
 			 if (rs.next()==true) {
 				 pais = new Pais();
-				 pais.setNombre(rs.getString(1));
+				 pais.setNombre(rs.getString(2));
 			 }
 			 rs.close();
 			 st.close();
-			 con.close();
+			 //con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
@@ -76,11 +76,11 @@ public class PaisDAOjdbc implements PaisDAO{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("INSERT INTO pais(nombres) VALUES (" + p.getNombre() + ")");
+			 int rs= st.executeUpdate("INSERT INTO pais(nombre) VALUES ('" + p.getNombre() + "')");
 			 
-			 rs.close();
+			 //rs.close();
 			 st.close();
-			 con.close();
+			 //con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }

@@ -3,7 +3,8 @@ package Tokyo_2021_Package;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class DeportistaDAOjdbc implements DeportistaDAO{
@@ -33,7 +34,7 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 	
 	
 	public List<Deportista> load(){
-		 Deportista deportista = new Deportista();
+	
 		 List<Deportista> listadeportista = new ArrayList<Deportista>();
 		 
 		 try{
@@ -41,18 +42,20 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 			 Statement st = con.createStatement();
 			 ResultSet rs= st.executeQuery("Select * from deportista ");
 			 while (rs.next()==true) {
+				 Deportista deportista = new Deportista();
+				 deportista.setId(rs.getInt(1));
+				 deportista.setApellido(rs.getString(2));
+				 deportista.setNombre(rs.getString(3));
+				 deportista.setEmail(rs.getString(4));
+				 deportista.setTelefono(rs.getString(5));
+				 deportista.setPais(rs.getInt(6));
 				 
-				 deportista.setNombre(rs.getString(2));
-				 deportista.setApellido(rs.getString(1));
-				 deportista.setEmail(rs.getString(3));
-				 deportista.setPais(rs.getInt(5));
-				 deportista.setTelefono(rs.getString(4));
 				 
 				 listadeportista.add(deportista);
 			 }
 			 rs.close();
 			 st.close();
-			 con.close();
+			// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }

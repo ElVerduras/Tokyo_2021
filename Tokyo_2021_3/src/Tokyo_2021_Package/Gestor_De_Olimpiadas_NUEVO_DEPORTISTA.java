@@ -71,7 +71,7 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	 			 public void actionPerformed(ActionEvent e) {
 	        		//BEGINNING SET UP ACCION´S 
 	        		Deportista d = new Deportista();
-	        		DeportistaDAOjdbc d_bbdd = new DeportistaDAOjdbc(); 
+	        		DeportistaDAO d_bbdd = FactoryDAO.getDeportistaDAO();
 	        		d.setNombre(Text_Name.getText());
 	        		d.setApellido(Text_Last_Name.getText());
 	        		d.setEmail(Text_Email.getText());

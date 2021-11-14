@@ -9,35 +9,46 @@ import java.util.List;
 public class DisciplinaDAOjdbc implements DisciplinaDAO {
 	
 	public String find(int id) {
-		 String nombreDisciplina = null;
+		 String disciplina = null;
+		// List<Disciplina> listaDisciplina = new ArrayList<Disciplina>();
+
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select d from disciplina where d.id='"+id+"'");
-			 if (rs.next()==true) {
-				 nombreDisciplina = rs.getString(1);
+			
+			 ResultSet rs1= st.executeQuery("Select * from deportista_en_disciplina where id_deportista='"+id+"'");
+			 
+			 if (rs1.next()==true) {
+				 int id_disciplina = rs1.getInt(2);
+				 ResultSet rs= st.executeQuery("Select * from disciplina where id='"+id_disciplina+"'");
+				 if (rs.next()==true)
+					 disciplina = rs.getString(2);
+				 else System.out.println("Error de SQL: ");
+					 
+				 rs.close();
+
 			 }
-			 rs.close();
+			 rs1.close();
 			 st.close();
 			 con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
-		 return nombreDisciplina;
+		 return disciplina;
 	}
 
 	public List<Disciplina> load(){
 		 Disciplina disciplina = null;
-		 ArrayList<Disciplina> listaNombreDisciplina = new ArrayList<Disciplina>();
+		 List<Disciplina> listaNombreDisciplina = new ArrayList<Disciplina>();
 		 
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 ResultSet rs= st.executeQuery("Select * disciplina ");
 			 while (rs.next()==true) {
-				 disciplina.setNombre(rs.getString(1));
+				 disciplina.setNombre(rs.getString(2));
 				 disciplina.setDeportista(0);
-				 disciplina.setId(rs.getInt(0));
+				 disciplina.setId(rs.getInt(1));
 				 
 				 listaNombreDisciplina.add(disciplina);
 			 }
