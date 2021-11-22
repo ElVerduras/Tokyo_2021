@@ -97,6 +97,22 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 		 }
 		
 	}
+	
+	public void update(Deportista d) {
+		 try{
+			 Connection con = MyConnection.getCon();
+			 Statement st = con.createStatement();
+			 
+			 int rs= st.executeUpdate("UPDATE deportista SET apellidos='" + d.getApellido() + "' ,nombres='" + d.getNombre() + "' ,email='" + d.getEmail() + "' ,telefono='" + d.getTelefono() + "' ,id_pais='" + d.getPais() + "'  WHERE id='" + d.getId() + "'");
+			 
+			// rs.close();
+			 st.close();
+			// con.close();
+		 } catch (java.sql.SQLException e) {
+			 System.out.println("Error de SQL: "+e.getMessage());
+		 }
+		
+	}
 
 }
 
