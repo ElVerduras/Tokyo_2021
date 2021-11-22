@@ -2,11 +2,20 @@ package Tokyo_2021_Package;
 
 public class Pais {
 	private String nombre;
+	private int id;
 
 	public Pais() {
 		
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Pais(String nombre) {
 		super();
 		this.nombre = nombre;

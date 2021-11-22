@@ -6,6 +6,8 @@ interface PaisDAO {
 
 	public Pais find(int id);
 	
+	public Pais find(String id);
+	
 	public List<Pais> load();
 	
 	public void delete(Pais p);

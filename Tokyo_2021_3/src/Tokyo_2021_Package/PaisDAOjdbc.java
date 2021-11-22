@@ -27,6 +27,25 @@ public class PaisDAOjdbc implements PaisDAO{
 		 return pais;
 	}
 	
+	public Pais find(String id) {
+		 Pais pais = null;
+		 try{
+			 Connection con = MyConnection.getCon();
+			 Statement st = con.createStatement();
+			 ResultSet rs= st.executeQuery("Select * from pais where nombre='"+id+"'");
+			 if (rs.next()==true) {
+				 pais = new Pais();
+				 pais.setId(rs.getInt(1));
+			 }
+			 rs.close();
+			 st.close();
+			 //con.close();
+		 } catch (java.sql.SQLException e) {
+			 System.out.println("Error de SQL: "+e.getMessage());
+		 }
+		 return pais;
+	}
+	
 	
 	public List<Pais> load(){
 		 Pais pais = null;
@@ -44,7 +63,7 @@ public class PaisDAOjdbc implements PaisDAO{
 			 }
 			 rs.close();
 			 st.close();
-			 con.close();
+			// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
@@ -63,7 +82,7 @@ public class PaisDAOjdbc implements PaisDAO{
 			 
 			 rs.close();
 			 st.close();
-			 con.close();
+			 //con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }

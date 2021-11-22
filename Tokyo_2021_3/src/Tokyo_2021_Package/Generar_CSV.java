@@ -10,9 +10,10 @@ public class Generar_CSV{
         List<Deportista> Deportist = FactoryDAO.getDeportistaDAO().load();
         Pais pais = new Pais();
         PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
+        DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
+        Deportista dep;
 
-
-        FileWriter csvWriter = new FileWriter("/home/claudia/Documentos/salida.csv");
+        FileWriter csvWriter = new FileWriter("C://Users/diego/Documentos/Deportistas.csv");
         //csvWriter.append("Nombre",",","Apellido",",","Pais",",","Disciplina");
         csvWriter.append("Nombre");           csvWriter.append(",");
         csvWriter.append("Apellido");        csvWriter.append(",");
@@ -21,17 +22,14 @@ public class Generar_CSV{
         csvWriter.append('\n');
 
         for (int i=0;i<Deportist.size();i++) {
-
+        	 dep=Deportist.get(i);
              pais=pais_bbdd.find(Deportist.get(i).getPais());
             //csvWriter.append(dep.getNombre(),",",dep.getApellido(),",",dep.getPais(),",",dep.getDisciplina());
-            csvWriter.append(dep.);       csvWriter.append(",");
+            csvWriter.append(pais.getNombre());       csvWriter.append(",");
             csvWriter.append(dep.getApellido());     csvWriter.append(",");
-            csvWriter.append(dep.getPais()); 
-            csvWriter.append(dep.getPais().      csvWriter.append(",");
-            csvWriter.append(dep.getDisciplina());   csvWriter.append(",");
+            csvWriter.append(pais.getNombre());		  csvWriter.append(",");    
+            csvWriter.append(disciplina_bbdd.find(Deportist.get(i).getId()));
             csvWriter.append('\n');
-
-
         }
         csvWriter.close();
 

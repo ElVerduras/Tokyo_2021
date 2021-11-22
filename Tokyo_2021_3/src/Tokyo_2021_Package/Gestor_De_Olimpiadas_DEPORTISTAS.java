@@ -27,14 +27,21 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 						 }
 			 		 }); 
 			        //END  SET UP RETURN
+	       
         //EXPORT CSV
+			        
         JButton Button_Export = new JButton("EXPORTAR CSV");
         Button_Export.setBounds(280,20,140,50);
         Button_Export.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Export.setHorizontalTextPosition(SwingConstants.CENTER);
-        frame.getContentPane().add(Button_Export);
-      //  Button_Export.addActionListener(Button_Export);
-        //				Generar_CSV
+        frame.getContentPane().add(Button_New);
+        	Button_Export.addActionListener( new ActionListener(){
+        			@Override
+ 			 		public void actionPerformed(ActionEvent e) { 
+        					//	Gestor_De_Olimpiadas_NUEVO_DEPORTISTA.Generar_CSV; //Error al llamar al Generar_CSV
+        	}	
+        });
+		
         //VOLVER
         JButton Button_Return = new JButton("VOLVER");
 		Button_Return.setBounds(440,20,100,50);
@@ -59,6 +66,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
         frame.getContentPane().add(Title_Table);
         //VISUALIZACION DE TABLA DEPORTISTAS
         
+        /*
         JTable estructura;
 	    JTable tabla = new JTable();
         String[] encabezado = {"nombre","pais","disciplina","boton","boton"};
@@ -102,7 +110,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	      // contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
 	     //  frame.pack();
 	       frame.setVisible(true);
-	       
+	     */  
 		}
 	
 	
@@ -120,7 +128,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 		Window.setResizable(false);
 		Window.setVisible(true);
 	}
-}	
+}
 	
 
 

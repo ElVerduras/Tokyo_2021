@@ -30,8 +30,8 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 }
 			 rs1.close();
 			 st.close();
-			 if (con != null)
-				 con.close();
+			
+				// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
@@ -55,7 +55,7 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 }
 			 rs.close();
 			 st.close();
-			 con.close();
+			// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
@@ -73,7 +73,7 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 
 			 rs.close();
 			 st.close();
-			 con.close();
+			// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
@@ -85,11 +85,11 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("INSERT INTO deportista_en_disciplina(id_deportista,id_disciplina) VALUES (" + nombre.getDeportista() +", "+nombre.getId()+ ")");
+			 int rs= st.executeUpdate("INSERT INTO deportista_en_disciplina(id_deportista, id_disciplina) VALUES (" + nombre.getDeportista() +", "+nombre.getId()+ ")");
 			 
-			 rs.close();
+			
 			 st.close();
-			 con.close();
+			// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }

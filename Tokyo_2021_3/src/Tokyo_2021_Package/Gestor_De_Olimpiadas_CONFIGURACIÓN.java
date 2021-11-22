@@ -11,6 +11,8 @@ public class Gestor_De_Olimpiadas_CONFIGURACIÓN extends Frame{
 	 private static JLabel Label_Password;   
 	 private static JTextField Text_Password ;  
 	 private static JButton Return_;  
+	 public  static String psw;
+	  static String usr;
  			public static void create(JFrame frame) {
 
 			//DECLARATION USER
@@ -46,6 +48,8 @@ public class Gestor_De_Olimpiadas_CONFIGURACIÓN extends Frame{
 	        	@Override
 	 			 public void actionPerformed(ActionEvent e) {
 	        		//BEGINNING SET UP ACCION´S 
+	        		psw = Text_Password.getText();
+	        		usr = Text_User.getText();
 	        		//MODIFICATION BBDD
 	    	        //END  SET UP ACCION´S 
 	        		frame.dispose();
