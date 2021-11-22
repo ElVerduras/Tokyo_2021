@@ -66,7 +66,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
         frame.getContentPane().add(Title_Table);
         //VISUALIZACION DE TABLA DEPORTISTAS
         
-        /*
+        
         JTable estructura;
 	    JTable tabla = new JTable();
         String[] encabezado = {"nombre","pais","disciplina","boton","boton"};
@@ -107,10 +107,10 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	       frame.getContentPane().add(scroll);
 	       frame.setVisible(true);
 	      // frame.getContentPane().add(tabla);
-	      // contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
+	       contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
 	     //  frame.pack();
 	       frame.setVisible(true);
-	     */  
+	     
 		}
 	
 	

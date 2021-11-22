@@ -11,5 +11,7 @@ interface DeportistaDAO {
 	public void delete(Deportista d);
 	
 	public void save(Deportista d);
+	
+	public void update(Deportista d);
 
 }

@@ -31,8 +31,10 @@ public class Pais {
 
 	@Override
 	public String toString() {
-		return "pais [nombre=" + nombre + "]";
+		return "Pais [nombre=" + nombre + ", id=" + id + "]";
 	}
+
+	
 	
 	
 

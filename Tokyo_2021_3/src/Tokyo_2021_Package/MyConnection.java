@@ -19,7 +19,7 @@ public class MyConnection {
 	static {
 		
 		try {		      
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tokyo2021_e3?useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8",usr, psw);		      		      
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tokyo2021_e3?useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8","root","1234");		      		      
 		}catch (SQLException e) {			
 			System.out.println("no se pudo conectar a la BD");
 		    e.printStackTrace();		    
