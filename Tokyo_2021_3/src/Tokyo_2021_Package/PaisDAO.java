@@ -14,4 +14,6 @@ interface PaisDAO {
 	
 	public void save(Pais p);
 	
+	public void update(Pais p);
+	
 }

@@ -11,5 +11,7 @@ interface DisciplinaDAO {
 	public void delete(Disciplina nombre);
 	
 	public void save(Disciplina nombre);
+	
+	public void update(Disciplina nombre);
 
 }

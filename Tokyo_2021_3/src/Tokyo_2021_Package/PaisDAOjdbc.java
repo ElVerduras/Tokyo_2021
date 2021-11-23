@@ -16,6 +16,7 @@ public class PaisDAOjdbc implements PaisDAO{
 			 ResultSet rs= st.executeQuery("Select * from pais where id='"+id+"'");
 			 if (rs.next()==true) {
 				 pais = new Pais();
+				 pais.setId(rs.getInt(1));
 				 pais.setNombre(rs.getString(2));
 			 }
 			 rs.close();
@@ -36,6 +37,7 @@ public class PaisDAOjdbc implements PaisDAO{
 			 if (rs.next()==true) {
 				 pais = new Pais();
 				 pais.setId(rs.getInt(1));
+				 pais.setNombre(rs.getString(2));
 			 }
 			 rs.close();
 			 st.close();
@@ -57,7 +59,8 @@ public class PaisDAOjdbc implements PaisDAO{
 			 ResultSet rs= st.executeQuery("Select * from pais ");
 			 while (rs.next()==true) {
 				 pais = new Pais();
-				 pais.setNombre(rs.getString(1));
+				 pais.setId(rs.getInt(1));
+				 pais.setNombre(rs.getString(2));
 				 
 				 listapais.add(pais);
 			 }
@@ -96,6 +99,22 @@ public class PaisDAOjdbc implements PaisDAO{
 			 Statement st = con.createStatement();
 			 
 			 int rs= st.executeUpdate("INSERT INTO pais(nombre) VALUES ('" + p.getNombre() + "')");
+			 
+			 //rs.close();
+			 st.close();
+			 //con.close();
+		 } catch (java.sql.SQLException e) {
+			 System.out.println("Error de SQL: "+e.getMessage());
+		 }
+		
+	}
+	
+	public void update(Pais p) {
+		 try{
+			 Connection con = MyConnection.getCon();
+			 Statement st = con.createStatement();
+			 
+			 int rs= st.executeUpdate("UPDATE pais SET nombre= '" + p.getNombre() + "' WHERE id='" + p.getId() + "'");
 			 
 			 //rs.close();
 			 st.close();
