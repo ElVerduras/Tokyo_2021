@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class Gestor_De_Olimpiadas_PAIS {
 
+	private static Container contentPane;
+
 	public static void create(JFrame frame) {
 		 //BUTTON NEW
 		JButton Button_New = new JButton("NUEVO");
@@ -41,68 +43,49 @@ public class Gestor_De_Olimpiadas_PAIS {
 						    	        //END  SET UP ACCION´S 
 						        		frame.dispose();
 									 }
-						 		 });
+		});
 		//END  SET UP RETURN
         
-        JTable estructura;
-	    JTable tabla = new JTable();
-        String[] encabezado = {"nombre","pais","disciplina","boton","boton"};
-	    //String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
-	    Object[][] pepe = {{true,"hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"}};
-
-        pepe[0][0] = "lolo";
-	    System.out.println(pepe[0][0]);
-        
-        /*
         
         JTable estructura;
 	    JTable tabla = new JTable();
         String[] encabezado = {"Paisés"};
-	    //String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
-	    Object[][] pepe = {{"h","h","h","h","h"}};
-	    pepe[0][0] = "lolo";
-	    System.out.println(pepe[0][0]);
-	    
-	    //DefaultTableModel modelo = new DefaultTableModel();
-	    
+	    Object[][] pepe = {};
+
 	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    List<Pais> listapais = FactoryDAO.getPaisDAO().load();
 	    Pais pais = new Pais();
 	    for (int i = 0; i< listapais.size(); i++) {
-	    	   pepe[1][i] =pais_bbdd.find(listapais.get(i).getId());	 
-	    	   pepe[2][i] =pais_bbdd.find(listapais.get(i).getNombre());
-	    	   pepe[3][i] = "edit";
-	    	   pepe[4][i] = "eliminar";
-	    	   
-	    }*/
-	    
+	    	   //pepe[0][i] =pais_bbdd.find(listapais.get(i).getId());	 
+	    	   //pepe[1][i] =pais_bbdd.find(listapais.get(i).getNombre());
+	    	   pepe[0][i] =listapais.get(i).getId();	 
+	    	   pepe[1][i] =listapais.get(i).getNombre();
+	    	   pepe[2][i] = "edit";
+	    	   pepe[3][i] = "eliminar";
+
 	             
 	      // JTable datos a mostrar
 	    	   
 	       Container contentPane = frame.getContentPane();
 	       tabla.getTableHeader().setReorderingAllowed(false);
 	       tabla.setModel(new Modelo(pepe, encabezado));
-
 	       JScrollPane scroll = new JScrollPane(tabla);
 	       scroll.setBounds(15,120,600,300);
 	       frame.getContentPane().add(scroll);
-	       frame.setVisible(true);
-	       frame.setVisible(true);
+	       frame.setVisible(true);}
 
-			public String[] Listado(){
-				String[] Cadena = null;
-				 
-			return Cadena;}
+		}		 
 			
-			public static void createWindow() {
+		public static void createWindow() {
 				JFrame Window = new JFrame("Gestor de Olimpiadas - País ");
 				Window.setBounds(100, 100, 700, 500);
 				Window.getContentPane().setLayout(null);
 				create(Window);
 				Window.setResizable(false);
 				Window.setVisible(true);
-			}
-		}	
+		}
+
+}
 			
 
 

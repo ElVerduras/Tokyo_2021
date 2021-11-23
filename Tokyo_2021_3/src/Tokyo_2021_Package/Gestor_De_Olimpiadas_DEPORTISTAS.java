@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gestor_De_Olimpiadas_DEPORTISTAS {
-
-	private static String[] Title_Table22 = {"Nombre y Apellido","País","Disciplina"};
 	
+	protected static final String[] Title_Table22 = null;
 	public static void create(JFrame frame) {
         //BUTTON NEW
 		JButton Button_New = new JButton("NUEVO");
@@ -52,7 +51,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 			        
 			        
         //VOLVER
-        JButton Button_Return = new JButton("cuño");
+        JButton Button_Return = new JButton("VOLVER");
 		Button_Return.setBounds(440,20,100,50);
 		Button_Return.setVerticalTextPosition(SwingConstants.BOTTOM);
 		Button_Return.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -78,9 +77,8 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
         
         JTable estructura;
 	    JTable tabla = new JTable();
-        String[] encabezado = {"nombre","pais","disciplina","boton","boton"};
-	    //String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
-	    Object[][] pepe = {{"culo","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"}};
+        String[] encabezado = {"Paisés"};
+	    Object[][] pepe = {};
 
         //String[][] pepe = {{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"}};
 	    //pepe[0][0] = "lolo";
@@ -88,7 +86,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    
 	    //DefaultTableModel modelo = new DefaultTableModel();
 	    
-	    /* List<Deportista> listaDeportista = FactoryDAO.getDeportistaDAO().load();
+	     List<Deportista> listaDeportista = FactoryDAO.getDeportistaDAO().load();
 	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
 	    Pais pais = new Pais();
@@ -102,24 +100,23 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    	   pepe[4][i] = "eliminar";
 	    	   
 	    }
-	    
-	       */
-	       
+		       
 	      // JTable datos a mostrar
 	    	   
 	       
 	       Container contentPane = frame.getContentPane();
-	     tabla.getTableHeader().setReorderingAllowed(false);
+	       tabla.getTableHeader().setReorderingAllowed(false);
+	       //tabla.setModel(new Modelo(pepe, encabezado));
+	       //
 	       tabla.setModel(new Modelo(pepe, encabezado));
-
+	       //
 	       JScrollPane scroll = new JScrollPane(tabla);
 	       scroll.setBounds(15,120,600,300);
 	       frame.getContentPane().add(scroll);
 	       frame.setVisible(true);
 	        // frame.getContentPane().add(tabla);
 	       //2contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
- 	       frame.setVisible(true);
-	     
+ 	     
 		}
 	
 	
