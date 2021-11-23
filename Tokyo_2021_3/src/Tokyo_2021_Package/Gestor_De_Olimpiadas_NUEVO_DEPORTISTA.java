@@ -96,10 +96,11 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 					frame.getContentPane().add(Country);
 
 			//DISCIPLINE
-					 //List<Disciplina> ldisciplina = FactoryDAO.getDisciplinaDAO().load();
-				    // for (int i = 0; i< lpais.size(); i++) {
-				    //	 Discipline_Str[i] = lpais.get(i).getNombre(); 
-				    // }
+					// List<Disciplina> ldisciplina = FactoryDAO.getDisciplinaDAO().load();
+					//Component lpais;
+					//for (int i = 0; i< lpais.size(); i++) {
+					//	 Discipline_Str[i] = lpais.get(i).getNombre(); 
+					//}
 					Label_Discipline =new JLabel("DISCIPLINA:"); 
 					Label_Discipline.setBounds(90,180,60,20);
 					frame.getContentPane().add(Label_Discipline);

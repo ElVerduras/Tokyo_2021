@@ -1,6 +1,7 @@
 package Tokyo_2021_Package;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;  
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class Gestor_De_Olimpiadas_DEPORTISTAS {
 
-	//private String[] Title_Table2 = {"Nombre y Apellido","País","Disciplina"};
+	private static String[] Title_Table22 = {"Nombre y Apellido","País","Disciplina"};
 	
 	public static void create(JFrame frame) {
         //BUTTON NEW
@@ -29,19 +30,27 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 			        //END  SET UP RETURN
 	       
         //EXPORT CSV
-			        
+		
+	    
         JButton Button_Export = new JButton("EXPORTAR CSV");
         Button_Export.setBounds(280,20,140,50);
         Button_Export.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Export.setHorizontalTextPosition(SwingConstants.CENTER);
-        frame.getContentPane().add(Button_New);
-        	Button_Export.addActionListener( new ActionListener(){
+        frame.getContentPane().add(Button_Export);
+        Button_Export.addActionListener( new ActionListener(){
         			@Override
  			 		public void actionPerformed(ActionEvent e) { 
-        					//	Gestor_De_Olimpiadas_NUEVO_DEPORTISTA.Generar_CSV; //Error al llamar al Generar_CSV
+        					try {
+								Generar_CSV.main(Title_Table22);
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}  
         	}	
-        });
+        }); 
 		
+			        
+			        
         //VOLVER
         JButton Button_Return = new JButton("VOLVER");
 		Button_Return.setBounds(440,20,100,50);

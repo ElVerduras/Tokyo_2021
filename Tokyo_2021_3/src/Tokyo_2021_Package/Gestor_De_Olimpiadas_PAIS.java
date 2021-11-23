@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,7 @@ public class Gestor_De_Olimpiadas_PAIS {
 					 		 }); 
 		//END  SET UP RETURN
 		
+					
 	    //VOLVER
 		JButton Button_Return = new JButton("VOLVER");
 		Button_Return.setBounds(440,20,100,50);
@@ -42,33 +44,46 @@ public class Gestor_De_Olimpiadas_PAIS {
 						 		 }); 
 		//END  SET UP RETURN
         
-      //JTable estructura
-	       JTable tabla = new JTable();
-	       String[] encabezado = {"paises"};
-	       String [] aCargar = new String[1];
-	       DefaultTableModel modelo = new DefaultTableModel(encabezado, 0);
-	       
-	      //JTable datos a mostrar
-	       //List<Pais> temporal = new PaisDAOjdbc().getListaDeportistas();
-	      /* 
-	       for (int i = 0; i< temporal.size(); i++) {
-	    	   aCargar[0] = temporal.get(i).getNombres();
-	    	   System.out.println("Llegue hasta aca");
-	    	   System.out.println(temporal.get(i).getApellido());
-	    	   modelo.addRow(aCargar);
+        
+        JTable estructura;
+	    JTable tabla = new JTable();
+        String[] encabezado = {"Paisés"};
+	    //String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
+	    Object[][] pepe = {{"h","h","h","h","h"}};
+	    pepe[0][0] = "lolo";
+	    System.out.println(pepe[0][0]);
+	    
+	    //DefaultTableModel modelo = new DefaultTableModel();
+	    
+	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
+	    List<Pais> listapais = FactoryDAO.getPaisDAO().load();
+	    Pais pais = new Pais();
+	    for (int i = 0; i< listapais.size(); i++) {
+	    	   pepe[1][i] =pais_bbdd.find(listapais.get(i).getId());	 
+	    	   pepe[2][i] =pais_bbdd.find(listapais.get(i).getNombre());
+	    	   pepe[3][i] = "edit";
+	    	   pepe[4][i] = "eliminar"; 
+	    }
+	    
+	             
+	      // JTable datos a mostrar
 	    	   
-	       }
-	       tabla.setModel(modelo);
-	       Container contentPane;
-		//tabla.setBounds(15,120,500,160);
-	       //this.getContentPane().add(new JScrollPane(tabla), BorderLayout.SOUTH );
-	       //this.setVisible(true);
-	       contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
-	       this.pack();
-	       this.setVisible(true);
-	   }
-			*/}
-			
+	       /*
+	       tabla.setModel(new Modelo(pepe, encabezado));
+	      // Container contentPane = frame.getContentPane();
+	     //  tabla.getTableHeader().setReorderingAllowed(false);
+	      // contentPane.setLayout(new BorderLayout());
+	       tabla.setBounds(15,120,500,160);
+	       JScrollPane scroll = new JScrollPane(tabla);
+	       scroll.setBounds(15,120,600,160);
+	       frame.getContentPane().add(scroll);
+	     //  frame.setVisible(true);
+	      // frame.getContentPane().add(tabla);
+	      // contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
+	     //  frame.pack();
+	       //frame.setVisible(true);
+	     
+			*/
 
 			public String[] Listado(){
 				String[] Cadena = null;

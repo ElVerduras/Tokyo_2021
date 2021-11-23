@@ -4,16 +4,16 @@ import java.util.List;
 
 public class Generar_CSV{
 
+	
 
     public static void main(String[] args) throws IOException {
-
         List<Deportista> Deportist = FactoryDAO.getDeportistaDAO().load();
         Pais pais = new Pais();
         PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
         DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
         Deportista dep;
 
-        FileWriter csvWriter = new FileWriter("C://Users/diego/Documentos/Deportistas.csv");
+        FileWriter csvWriter = new FileWriter("C:\\Users\\diego\\OneDrive\\Escritorio\\Deportistas.csv");
         //csvWriter.append("Nombre",",","Apellido",",","Pais",",","Disciplina");
         csvWriter.append("Nombre");           csvWriter.append(",");
         csvWriter.append("Apellido");        csvWriter.append(",");
@@ -34,4 +34,7 @@ public class Generar_CSV{
         csvWriter.close();
 
 }
+
+	
+
 }

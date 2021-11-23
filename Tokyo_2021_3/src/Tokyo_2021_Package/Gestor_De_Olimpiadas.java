@@ -30,7 +30,16 @@ public class Gestor_De_Olimpiadas extends JFrame{
         Button_Country.setIcon(Country_Icon);
         Button_Country.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Country.setHorizontalTextPosition(SwingConstants.CENTER);
+        //BEGINNING SET UP RETURN
+        Button_Country.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gestor_De_Olimpiadas_PAIS.createWindow();
+			}
+		}); 
+		//END  SET UP RETURN
         frame.getContentPane().add(Button_Country);
+        
 
 		Icon Discipline_Icon = new ImageIcon("resources/Disciplina.png");
         JButton Button_Discipline = new JButton("Disciplina");
@@ -39,14 +48,7 @@ public class Gestor_De_Olimpiadas extends JFrame{
         Button_Discipline.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Discipline.setHorizontalTextPosition(SwingConstants.CENTER);
         frame.getContentPane().add(Button_Discipline);    
-      //BEGINNING SET UP RETURN
-        						Button_Discipline.addActionListener( new ActionListener(){
-			     				@Override
-				     			public void actionPerformed(ActionEvent e) {
-			     					Gestor_De_Olimpiadas_PAIS.createWindow();
-				     			}
-			 		 }); 
-        //END  SET UP RETURN
+
         
 
         //CREATE SETTINGS

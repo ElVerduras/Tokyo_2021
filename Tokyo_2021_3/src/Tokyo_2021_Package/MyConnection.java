@@ -11,15 +11,15 @@ import java.sql.Statement;
 
 public class MyConnection {
 	
-	//private static String user = "root";
-	//private static String pasword = "1234";
+	private static String user = "root";
+	private static String pasword = "1234";
 	
 	private static Connection con = null;
 	
 	static {
 		
 		try {		      
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tokyo2021_e3?useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8",usr, psw);		      		      
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tokyo2021_e3?useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8",user, pasword);		      		      
 		}catch (SQLException e) {			
 			System.out.println("no se pudo conectar a la BD");
 		    e.printStackTrace();		    
