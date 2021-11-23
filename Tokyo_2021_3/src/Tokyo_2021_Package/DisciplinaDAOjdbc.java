@@ -95,5 +95,10 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 		 }
 		
 	}
+	
+	public void update(Disciplina nombre) {
+		this.delete(nombre);
+		this.save(nombre); 
+	}
 
 }

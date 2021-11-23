@@ -41,9 +41,19 @@ public class Gestor_De_Olimpiadas_PAIS {
 						    	        //END  SET UP ACCION´S 
 						        		frame.dispose();
 									 }
-						 		 }); 
+						 		 });
 		//END  SET UP RETURN
         
+        JTable estructura;
+	    JTable tabla = new JTable();
+        String[] encabezado = {"nombre","pais","disciplina","boton","boton"};
+	    //String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
+	    Object[][] pepe = {{true,"hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"}};
+
+        pepe[0][0] = "lolo";
+	    System.out.println(pepe[0][0]);
+        
+        /*
         
         JTable estructura;
 	    JTable tabla = new JTable();
@@ -62,28 +72,22 @@ public class Gestor_De_Olimpiadas_PAIS {
 	    	   pepe[1][i] =pais_bbdd.find(listapais.get(i).getId());	 
 	    	   pepe[2][i] =pais_bbdd.find(listapais.get(i).getNombre());
 	    	   pepe[3][i] = "edit";
-	    	   pepe[4][i] = "eliminar"; 
-	    }
+	    	   pepe[4][i] = "eliminar";
+	    	   
+	    }*/
 	    
 	             
 	      // JTable datos a mostrar
 	    	   
-	       /*
+	       Container contentPane = frame.getContentPane();
+	       tabla.getTableHeader().setReorderingAllowed(false);
 	       tabla.setModel(new Modelo(pepe, encabezado));
-	      // Container contentPane = frame.getContentPane();
-	     //  tabla.getTableHeader().setReorderingAllowed(false);
-	      // contentPane.setLayout(new BorderLayout());
-	       tabla.setBounds(15,120,500,160);
+
 	       JScrollPane scroll = new JScrollPane(tabla);
-	       scroll.setBounds(15,120,600,160);
+	       scroll.setBounds(15,120,600,300);
 	       frame.getContentPane().add(scroll);
-	     //  frame.setVisible(true);
-	      // frame.getContentPane().add(tabla);
-	      // contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
-	     //  frame.pack();
-	       //frame.setVisible(true);
-	     
-			*/
+	       frame.setVisible(true);
+	       frame.setVisible(true);
 
 			public String[] Listado(){
 				String[] Cadena = null;

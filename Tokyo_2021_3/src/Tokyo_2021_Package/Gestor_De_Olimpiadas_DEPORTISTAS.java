@@ -52,7 +52,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 			        
 			        
         //VOLVER
-        JButton Button_Return = new JButton("VOLVER");
+        JButton Button_Return = new JButton("cuño");
 		Button_Return.setBounds(440,20,100,50);
 		Button_Return.setVerticalTextPosition(SwingConstants.BOTTOM);
 		Button_Return.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -80,13 +80,15 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    JTable tabla = new JTable();
         String[] encabezado = {"nombre","pais","disciplina","boton","boton"};
 	    //String[] aCargar = new String[5];//[apellido][pais][disciplina][editar][eliminar]
-	    Object[][] pepe = {{"h","h","h","h","h"}};
-	    pepe[0][0] = "lolo";
-	    System.out.println(pepe[0][0]);
+	    Object[][] pepe = {{"culo","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"}};
+
+        //String[][] pepe = {{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"},{"hoal","hsfsf","gegh","rr4h","4t4rgbh"},{"h","h","h","h","h"}};
+	    //pepe[0][0] = "lolo";
+	   //System.out.println(pepe[0][0]);
 	    
 	    //DefaultTableModel modelo = new DefaultTableModel();
 	    
-	    List<Deportista> listaDeportista = FactoryDAO.getDeportistaDAO().load();
+	    /* List<Deportista> listaDeportista = FactoryDAO.getDeportistaDAO().load();
 	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
 	    Pais pais = new Pais();
@@ -101,24 +103,22 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    	   
 	    }
 	    
-	       
+	       */
 	       
 	      // JTable datos a mostrar
 	    	   
 	       
+	       Container contentPane = frame.getContentPane();
+	     tabla.getTableHeader().setReorderingAllowed(false);
 	       tabla.setModel(new Modelo(pepe, encabezado));
-	      // Container contentPane = frame.getContentPane();
-	     //  tabla.getTableHeader().setReorderingAllowed(false);
-	      // contentPane.setLayout(new BorderLayout());
-	       tabla.setBounds(15,120,500,160);
+
 	       JScrollPane scroll = new JScrollPane(tabla);
-	       scroll.setBounds(15,120,600,160);
+	       scroll.setBounds(15,120,600,300);
 	       frame.getContentPane().add(scroll);
 	       frame.setVisible(true);
-	      // frame.getContentPane().add(tabla);
-	       contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
-	     //  frame.pack();
-	       frame.setVisible(true);
+	        // frame.getContentPane().add(tabla);
+	       //2contentPane.add(new JScrollPane(tabla), BorderLayout.CENTER);
+ 	       frame.setVisible(true);
 	     
 		}
 	
