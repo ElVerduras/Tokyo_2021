@@ -13,7 +13,7 @@ public class PaisDAOjdbc implements PaisDAO{
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select * from pais where id='"+id+"'");
+			 ResultSet rs= st.executeQuery("SELECT * FROM pais WHERE id='"+id+"'");
 			 if (rs.next()==true) {
 				 pais = new Pais();
 				 pais.setId(rs.getInt(1));
@@ -33,7 +33,7 @@ public class PaisDAOjdbc implements PaisDAO{
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select * from pais where nombre='"+id+"'");
+			 ResultSet rs= st.executeQuery("SELECT * FROM pais WHERE nombre='"+id+"'");
 			 if (rs.next()==true) {
 				 pais = new Pais();
 				 pais.setId(rs.getInt(1));
@@ -50,14 +50,15 @@ public class PaisDAOjdbc implements PaisDAO{
 	
 	
 	public List<Pais> load(){
-		 Pais pais = null;
+		 
 		 List<Pais> listapais = new ArrayList<Pais>();
 		 
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select * from pais ");
+			 ResultSet rs= st.executeQuery("SELECT * FROM pais ");
 			 while (rs.next()==true) {
+				 Pais pais =new Pais();
 				 pais = new Pais();
 				 pais.setId(rs.getInt(1));
 				 pais.setNombre(rs.getString(2));
@@ -81,7 +82,7 @@ public class PaisDAOjdbc implements PaisDAO{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("Delete a from pais where a.nombre='"+nombre+"'");
+			 ResultSet rs= st.executeQuery("DELETE a FROM pais WHERE a.nombre='"+nombre+"'");
 			 
 			 rs.close();
 			 st.close();

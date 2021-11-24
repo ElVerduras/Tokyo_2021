@@ -29,16 +29,19 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	private static JLabel Label_Number_Phone; 
 	private static JTextField Text_Number_Phone;
 	
+	/*
 	private static JLabel Label_Country;
 	static String[] Country_Str={ "Argentina","Bolivia","Peru" };
 	static DefaultComboBoxModel<String> Country_model=new  DefaultComboBoxModel<String>(Country_Str);
 	static JComboBox<String> Country = new JComboBox<String>(Country_model);
+	*/
 
- 	
+ 	/*
  	private static JLabel Label_Discipline;
 	static String[] Discipline_Str={ "Arquería","Gimnasia Artistica","Atletismo" };
 	static DefaultComboBoxModel<String> Discipline_model=new  DefaultComboBoxModel<String>(Discipline_Str);
 	static JComboBox<String> Discipline = new JComboBox<String>(Discipline_model);
+ 	*/
  	
  	private static JButton Save;
 
@@ -85,10 +88,16 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 				    frame.getContentPane().add(Text_Number_Phone);
 			//COUNTRY	
 				     
-				    // List<Pais> lpais = FactoryDAO.getPaisDAO().load();
-				    // for (int i = 0; i< lpais.size(); i++) {
-				    //	 Country_Str[i] = lpais.get(i).getNombre(); 
-				    // }
+				    JLabel Label_Country;			    
+				    List<Pais> lpais = FactoryDAO.getPaisDAO().load();
+					String Country_Str[]=new String[lpais.size()];
+
+				    for (int i = 0; i< lpais.size(); i++) {
+				    	Country_Str[i] = lpais.get(i).getNombre(); 
+				    }
+				     DefaultComboBoxModel<String> Country_model=new  DefaultComboBoxModel<String>(Country_Str);
+				     JComboBox<String> Country = new JComboBox<String>(Country_model);
+					
 					 Label_Country = new JLabel("PAÍS: ");
 					 Label_Country.setBounds(100,160,60,20);
 					 frame.getContentPane().add(Label_Country);	 
@@ -96,11 +105,17 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 					frame.getContentPane().add(Country);
 
 			//DISCIPLINE
-					// List<Disciplina> ldisciplina = FactoryDAO.getDisciplinaDAO().load();
-					//Component lpais;
-					//for (int i = 0; i< lpais.size(); i++) {
-					//	 Discipline_Str[i] = lpais.get(i).getNombre(); 
-					//}
+					JLabel Label_Discipline;
+
+					 List<Disciplina> ldisciplina = FactoryDAO.getDisciplinaDAO().load();
+					String Discipline_Str[]=new String[ldisciplina.size()];
+					for (int i = 0; i< ldisciplina.size(); i++) {
+						 Discipline_Str[i] = ldisciplina.get(i).getNombre(); 
+					}
+					DefaultComboBoxModel<String> Discipline_model=new  DefaultComboBoxModel<String>(Discipline_Str);
+					JComboBox<String> Discipline = new JComboBox<String>(Discipline_model);
+					
+					
 					Label_Discipline =new JLabel("DISCIPLINA:"); 
 					Label_Discipline.setBounds(90,180,60,20);
 					frame.getContentPane().add(Label_Discipline);

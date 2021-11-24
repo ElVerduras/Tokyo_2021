@@ -1,0 +1,4 @@
+Para comprobar la cadena numérica, 
+podríamos usar el método matched() de la clase String
+ que toma regex como argumento y devuelve un valor
+ booleano, ya sea true o false.

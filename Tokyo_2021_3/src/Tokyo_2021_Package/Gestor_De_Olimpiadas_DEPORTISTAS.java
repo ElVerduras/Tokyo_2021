@@ -87,9 +87,6 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
         String[] encabezado = {"","","","",""};
 
 	    for (int i = 0; i< listaDeportista.size(); i++) {
-	    	   pepe[0][i] = listaDeportista.get(i).getApellido();
-	    	   System.out.println(pepe[0][i]);
-	    	   pais = pais_bbdd.find(listaDeportista.get(i).getPais());
 	    	   pepe[i][0] = listaDeportista.get(i).getNombre()+" "+listaDeportista.get(i).getApellido();
 	    	   pepe[i][1] = listaDeportista.get(i).getPais();
 	    	   pepe[i][2] = disciplina_bbdd.find(listaDeportista.get(i).getId());
