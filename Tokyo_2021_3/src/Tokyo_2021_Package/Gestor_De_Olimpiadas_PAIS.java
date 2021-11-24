@@ -49,30 +49,32 @@ public class Gestor_De_Olimpiadas_PAIS {
         
         JTable estructura;
 	    JTable tabla = new JTable();
-        String[] encabezado = {"Paisés"};
-	    Object[][] pepe = {};
+        String[] encabezado = {"","","",""};
+	    
 
 	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    List<Pais> listapais = FactoryDAO.getPaisDAO().load();
+	    System.out.print(listapais.size());
 	    Pais pais = new Pais();
+	    Object pepe[][] = new Object[listapais.size()][4];
+	   // Object[listapais.size()][4] pepe ;     //{"","","",""}
 	    for (int i = 0; i< listapais.size(); i++) {
-	    	   //pepe[0][i] =pais_bbdd.find(listapais.get(i).getId());	 
-	    	   //pepe[1][i] =pais_bbdd.find(listapais.get(i).getNombre());
-	    	   pepe[0][i] =listapais.get(i).getId();	 
-	    	   pepe[1][i] =listapais.get(i).getNombre();
-	    	   pepe[2][i] = "edit";
-	    	   pepe[3][i] = "eliminar";
-
-	             
+	    	   pepe[i][0] =listapais.get(i).getId(); 
+	    	   pepe[i][1] =listapais.get(i).getNombre();
+	    	   pepe[i][2] = "edit";
+	    	   pepe[i][3] = "eliminar";
+	    }
+	    
 	      // JTable datos a mostrar
 	    	   
 	       Container contentPane = frame.getContentPane();
 	       tabla.getTableHeader().setReorderingAllowed(false);
 	       tabla.setModel(new Modelo(pepe, encabezado));
+	       tabla.getColumnModel().getColumn(0).setMaxWidth(10);;
 	       JScrollPane scroll = new JScrollPane(tabla);
 	       scroll.setBounds(15,120,600,300);
 	       frame.getContentPane().add(scroll);
-	       frame.setVisible(true);}
+	       frame.setVisible(true);
 
 		}		 
 			
