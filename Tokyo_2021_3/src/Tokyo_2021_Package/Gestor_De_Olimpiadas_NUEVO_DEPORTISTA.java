@@ -1,10 +1,5 @@
 package Tokyo_2021_Package;
 
-import javax.swing.table.DefaultTableModel;
-
-import java.awt.Component;
-import java.awt.FlowLayout;
-
 //import com.sun.tools.javac.util.List;
 
 //import jdk.tools.jlink.internal.Jlink;
@@ -28,20 +23,6 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	
 	private static JLabel Label_Number_Phone; 
 	private static JTextField Text_Number_Phone;
-	
-	/*
-	private static JLabel Label_Country;
-	static String[] Country_Str={ "Argentina","Bolivia","Peru" };
-	static DefaultComboBoxModel<String> Country_model=new  DefaultComboBoxModel<String>(Country_Str);
-	static JComboBox<String> Country = new JComboBox<String>(Country_model);
-	*/
-
- 	/*
- 	private static JLabel Label_Discipline;
-	static String[] Discipline_Str={ "Arquería","Gimnasia Artistica","Atletismo" };
-	static DefaultComboBoxModel<String> Discipline_model=new  DefaultComboBoxModel<String>(Discipline_Str);
-	static JComboBox<String> Discipline = new JComboBox<String>(Discipline_model);
- 	*/
  	
  	private static JButton Save;
 
@@ -87,7 +68,6 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 				    frame.getContentPane().add(Label_Number_Phone);
 				    frame.getContentPane().add(Text_Number_Phone);
 			//COUNTRY	
-				     
 				    JLabel Label_Country;			    
 				    List<Pais> lpais = FactoryDAO.getPaisDAO().load();
 					String Country_Str[]=new String[lpais.size()];
@@ -109,9 +89,7 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 
 					 List<Disciplina> ldisciplina = FactoryDAO.getDisciplinaDAO().load();
 					String Discipline_Str[]=new String[ldisciplina.size()];
-					for (int i = 0; i< ldisciplina.size(); i++) {
-						 Discipline_Str[i] = ldisciplina.get(i).getNombre(); 
-					}
+					for (int i = 0; i< ldisciplina.size(); i++) {  Discipline_Str[i] = ldisciplina.get(i).getNombre();  }
 					DefaultComboBoxModel<String> Discipline_model=new  DefaultComboBoxModel<String>(Discipline_Str);
 					JComboBox<String> Discipline = new JComboBox<String>(Discipline_model);
 					
@@ -134,37 +112,41 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	 			 public void actionPerformed(ActionEvent e) {
 	        		//BEGINNING SET UP ACCION´S 
 	        		Deportista d = new Deportista();
-	        		Pais p = new Pais();
-	        		Disciplina dis = new Disciplina();
-	        		DisciplinaDAO dis_bbdd = FactoryDAO.getDisciplinaDAO();
+	        		Deportista_en_disciplina dd = new Deportista_en_disciplina();
+
+	 	            Deportista_en_disciplinaDAO dd_ddbb =FactoryDAO.getDeportista_en_disciplinaDAO();
+	 	            DeportistaDAO d_bbdd = FactoryDAO.getDeportistaDAO(); 
+	 	            DisciplinaDAO dis_ddbb=FactoryDAO.getDisciplinaDAO();
+	 	            PaisDAO p_ddbb=FactoryDAO.getPaisDAO();
 	        		
-	        		DeportistaDAO d_bbdd = FactoryDAO.getDeportistaDAO(); 
+	 	            List<Deportista> ldeportista = FactoryDAO.getDeportistaDAO().load();
+		        	//ALMACENA LOS DATOS CAPTURADOS
 	        		d.setNombre(Text_Name.getText());
 	        		d.setApellido(Text_Last_Name.getText());
 	        		d.setEmail(Text_Email.getText());
 	        		d.setTelefono(Text_Number_Phone.getText());
-	        		d.setPais(Country.getSelectedIndex() + 1);
+	        		d.setId_disciplina(d_bbdd.recuperar_max_id()+1);
+	        		//accedo a la base de paises y me quedo con el id del pais seleccionado en el desplegable
+	        		d.setId_pais(p_ddbb.find(Country.getSelectedItem().toString()).getId());
+	        		//accedo a la base de disciplinas y me quedo con el id de la disciplina seleccionada en el desplegable
+	        				//d.setId_disciplina(dis_ddbb.find(Discipline.getSelectedItem().toString()).getId()); 
 	        		
-	        		//MODIFICATION BBDD
+	        		//MODIFICA DISCIPLINA DEPORTISTA
+	 	            dd.setId_deportista(d_bbdd.recuperar_max_id()+1);  		
+	 	            //System.out.println(d_bbdd.find(d).getId_disciplina());
+	 	            dd.setId_disciplina(dis_ddbb.find(Discipline.getSelectedItem().toString()).getId());
+	 	            //System.out.println(dis_ddbb.find(Discipline.getSelectedItem().toString()).getId());
+	 	            //ALMACENA DEPORTISTA
 	        		d_bbdd.save(d);
-	        		d = d_bbdd.find(d.getApellido());
-	        		dis.setId(Discipline.getSelectedIndex() + 1);
-	        		System.out.println(Discipline.getSelectedIndex() + 1);
-	        		dis.setDeportista(d.getId());
-	        		dis_bbdd.save(dis);
-	        		
+	        		//ALMACENA DISCIPLINA DEPORTISTA
+	 	            dd_ddbb.save(dd);
+	                		 
 	    	        //END  SET UP ACCION´S 
-	        		frame.dispose();
-				 }
+	        		frame.dispose();				 }
 	 		 }); 
 	        //END  SET UP SAVE
 }
  
-	private static void add(JScrollPane jScrollPane) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas - NUEVO DEPORTISTA");
 		Window.setBounds(100, 100, 520, 300);

@@ -10,7 +10,7 @@ interface PaisDAO {
 	
 	public List<Pais> load();
 	
-	public void delete(Pais p);
+	public Boolean delete(Pais p);
 	
 	public void save(Pais p);
 	

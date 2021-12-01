@@ -62,6 +62,9 @@ public class Gestor_De_Olimpiadas_CONFIGURACIÓN extends Frame{
 		public static void createWindow() {
 			JFrame Window = new JFrame("Gestor de Olimpiadas - CONFIGURACIÓN ");
 			Window.setBounds(100, 100, 300, 170);
+			Icon Icon_Wiew = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\fondoconf.png");
+			JLabel image=new JLabel(Icon_Wiew);
+			Window.setContentPane(image);
 			Window.getContentPane().setLayout(null);
 			create(Window);
 			Window.setResizable(false);

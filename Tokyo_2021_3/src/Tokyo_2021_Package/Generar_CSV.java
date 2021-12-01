@@ -23,12 +23,12 @@ public class Generar_CSV{
 
         for (int i=0;i<Deportist.size();i++) {
         	 dep=Deportist.get(i);
-             pais=pais_bbdd.find(Deportist.get(i).getPais());
+             pais=pais_bbdd.find(Deportist.get(i).getId_pais());
             //csvWriter.append(dep.getNombre(),",",dep.getApellido(),",",dep.getPais(),",",dep.getDisciplina());
             csvWriter.append(pais.getNombre());       csvWriter.append(",");
             csvWriter.append(dep.getApellido());     csvWriter.append(",");
             csvWriter.append(pais.getNombre());		  csvWriter.append(",");    
-            csvWriter.append(disciplina_bbdd.find(Deportist.get(i).getId()));
+            csvWriter.append((CharSequence) disciplina_bbdd.find(Deportist.get(i).getId_disciplina()));
             csvWriter.append('\n');
         }
         csvWriter.close();

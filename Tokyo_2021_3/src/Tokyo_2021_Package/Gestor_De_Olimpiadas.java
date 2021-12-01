@@ -1,4 +1,5 @@
 package Tokyo_2021_Package;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,11 +9,13 @@ public class Gestor_De_Olimpiadas extends JFrame{
 	public static void create(JFrame frame) {
 		//Generation Buttons
 		
-		Icon Deportist_Icon = new ImageIcon("resources/athlete.png");
+		Icon Deportist_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\athlete.png");
         JButton Button_Deportist = new JButton("Deportista");
         Button_Deportist.setBounds(20,20,120,75);
         Button_Deportist.setIcon(Deportist_Icon);
+        Button_Deportist.setIconTextGap(2);
         Button_Deportist.setVerticalTextPosition(SwingConstants.BOTTOM);
+        Button_Deportist.setBackground(Color.WHITE);
         Button_Deportist.setHorizontalTextPosition(SwingConstants.CENTER);
         frame.getContentPane().add(Button_Deportist);
         //BEGINNING SET UP RETURN
@@ -24,12 +27,13 @@ public class Gestor_De_Olimpiadas extends JFrame{
  		 }); 
         //END  SET UP RETURN
         
-		Icon Country_Icon = new ImageIcon("resources/Pais.png");
+		Icon Country_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\Pais.png");
         JButton Button_Country = new JButton("Pais");
         Button_Country.setBounds(160,20,120,75);
         Button_Country.setIcon(Country_Icon);
         Button_Country.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Country.setHorizontalTextPosition(SwingConstants.CENTER);
+        Button_Country.setBackground(Color.WHITE);
         //BEGINNING SET UP RETURN
         Button_Country.addActionListener( new ActionListener(){
 			@Override
@@ -41,18 +45,28 @@ public class Gestor_De_Olimpiadas extends JFrame{
         frame.getContentPane().add(Button_Country);
         
 
-		Icon Discipline_Icon = new ImageIcon("resources/Disciplina.png");
+		Icon Discipline_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\Disciplina.png");
         JButton Button_Discipline = new JButton("Disciplina");
         Button_Discipline.setBounds(300,20,120,75);
         Button_Discipline.setIcon(Discipline_Icon);
+        Button_Discipline.setBackground(Color.WHITE);
         Button_Discipline.setVerticalTextPosition(SwingConstants.BOTTOM);
         Button_Discipline.setHorizontalTextPosition(SwingConstants.CENTER);
+        
+        Button_Discipline.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gestor_De_Olimpiadas_DISCIPLINAS.createWindow();
+			}
+		}); 
+		//END  SET UP RETURN
         frame.getContentPane().add(Button_Discipline);    
+       
 
         
 
         //CREATE SETTINGS
-		Icon Settings_Icon = new ImageIcon("resources/config.png");
+		Icon Settings_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\config.png");
 		JButton Settings_ = new JButton(Settings_Icon);
 		Settings_.setBounds(460,10,30,30);
         frame.getContentPane().add(Settings_);
@@ -69,6 +83,9 @@ public class Gestor_De_Olimpiadas extends JFrame{
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas");
 		Window.setBounds(100, 100, 520, 300);
+		Icon Icon_Wiew = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\fondo.png");
+		JLabel image=new JLabel(Icon_Wiew);
+		Window.setContentPane(image);
 		Window.getContentPane().setLayout(null);
 		create(Window);
 		Window.setResizable(false);

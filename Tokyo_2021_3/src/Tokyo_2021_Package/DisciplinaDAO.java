@@ -4,7 +4,9 @@ import java.util.List;
 
 interface DisciplinaDAO {
 	
-	public String find(int id);
+	public Disciplina find(int id);
+	
+	public Disciplina find(String nombre);
 	
 	public List<Disciplina> load();
 	

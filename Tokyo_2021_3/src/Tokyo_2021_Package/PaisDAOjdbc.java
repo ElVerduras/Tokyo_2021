@@ -9,13 +9,12 @@ import java.util.List;
 public class PaisDAOjdbc implements PaisDAO{
 	
 	public Pais find(int id) {
-		 Pais pais = null;
+		 Pais pais = new Pais();
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 ResultSet rs= st.executeQuery("SELECT * FROM pais WHERE id='"+id+"'");
 			 if (rs.next()==true) {
-				 pais = new Pais();
 				 pais.setId(rs.getInt(1));
 				 pais.setNombre(rs.getString(2));
 			 }
@@ -28,14 +27,13 @@ public class PaisDAOjdbc implements PaisDAO{
 		 return pais;
 	}
 	
-	public Pais find(String id) {
-		 Pais pais = null;
+	public Pais find(String nombre) {
+		 Pais pais = new Pais();
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("SELECT * FROM pais WHERE nombre='"+id+"'");
+			 ResultSet rs= st.executeQuery("SELECT * FROM pais WHERE nombre='"+nombre+"'");
 			 if (rs.next()==true) {
-				 pais = new Pais();
 				 pais.setId(rs.getInt(1));
 				 pais.setNombre(rs.getString(2));
 			 }
@@ -75,22 +73,21 @@ public class PaisDAOjdbc implements PaisDAO{
 	
 		
 	}
-	public void delete(Pais p) {
-		 String nombre = p.getNombre();
-		 
+	public Boolean delete(Pais p) {
+		 int id = p.getId();
+		 boolean aux=false;
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("DELETE a FROM pais WHERE a.nombre='"+nombre+"'");
-			 
-			 rs.close();
+			aux=st.execute("DELETE FROM pais WHERE id='"+id+"'");
+
 			 st.close();
 			 //con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
-		
+		return aux;
 	}
 
 

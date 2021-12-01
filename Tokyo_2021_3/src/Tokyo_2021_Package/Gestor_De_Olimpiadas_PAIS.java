@@ -1,16 +1,15 @@
 package Tokyo_2021_Package;
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class Gestor_De_Olimpiadas_PAIS {
-
-	private static Container contentPane;
 
 	public static void create(JFrame frame) {
 		 //BUTTON NEW
@@ -47,30 +46,73 @@ public class Gestor_De_Olimpiadas_PAIS {
 		//END  SET UP RETURN
         
         
-        JTable estructura;
-	    JTable tabla = new JTable();
-        String[] encabezado = {"","","",""};
+        String[] encabezado = {"Id","País","",""};
 	    
 
 	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    List<Pais> listapais = FactoryDAO.getPaisDAO().load();
 	    System.out.print(listapais.size());
-	    Pais pais = new Pais();
 	    Object pepe[][] = new Object[listapais.size()][4];
 	   // Object[listapais.size()][4] pepe ;     //{"","","",""}
 	    for (int i = 0; i< listapais.size(); i++) {
 	    	   pepe[i][0] =listapais.get(i).getId(); 
 	    	   pepe[i][1] =listapais.get(i).getNombre();
-	    	   pepe[i][2] = "edit";
+	    	   pepe[i][2] = "editar";
 	    	   pepe[i][3] = "eliminar";
 	    }
 	    
 	      // JTable datos a mostrar
+	    
+	       DefaultTableModel model = new DefaultTableModel(pepe, encabezado);
+	       JTable tabla = new JTable(model);
+	       Action editar = new AbstractAction(){
+	    	   public void actionPerformed(ActionEvent e) {
+		           JTable tabla = (JTable)e.getSource(); 
+	    		   int fila_editar = Integer.valueOf( e.getActionCommand() );  //pos de fila a borrar
+	               int id_pais=(int) tabla.getValueAt (fila_editar, 0);  
+	               String nombre_pais=(String) tabla.getValueAt(fila_editar, 1);
+	               Pais pais=new Pais();
+	               pais.setId(id_pais);
+	               pais.setNombre(nombre_pais);
+	    		   Gestor_De_Olimpiadas_Pais_EDIT.createWindow(pais);
+	    		   //EDITA LA BASE DE DATOS
+	    		   frame.dispose();
+	    		   
+	    	   }
+	       };
+		    ButtonColumn buttonColumn_edit = new ButtonColumn(tabla,editar,2);
+		    buttonColumn_edit.setMnemonic(KeyEvent.VK_D);
+	       
+	       Action eliminar = new AbstractAction(){
+	        public void actionPerformed(ActionEvent e) {
+	            JTable tabla = (JTable)e.getSource();
+	            int modelRow = Integer.valueOf( e.getActionCommand() );  //pos de fila a borrar
+	            String nombre_pais=(String) tabla.getValueAt (modelRow, 1);  //almaceno el MOMBRE del pais a borrar  
+	            int id_pais=(int) tabla.getValueAt (modelRow, 0);      //almaceno el ID del pais a borrar   
+	            ((DefaultTableModel)tabla.getModel()).removeRow(modelRow);
+	            //AGREGAR SENTENCIA DE DELETE
+	            Pais p = new Pais();
+        		PaisDAOjdbc p_ddbb = new PaisDAOjdbc();
+        		p.setId(id_pais); 	
+        		p.setNombre(nombre_pais); 
+        			
+            		if(p_ddbb.delete(p)==false){
+        				    String cmd = e.getActionCommand();
+                		    JOptionPane.showMessageDialog(frame, "el pais registrado bajo el id_pais: " + cmd + " ,no se pudo eliminar,pruebe eliminando los deportistas ");
+        			}
+					  
+        		}
+        		
+	    };
+	     
+	    ButtonColumn buttonColumn_delete = new ButtonColumn(tabla, eliminar,3);
+	    buttonColumn_delete.setMnemonic(KeyEvent.VK_D);
 	    	   
 	       Container contentPane = frame.getContentPane();
 	       tabla.getTableHeader().setReorderingAllowed(false);
-	       tabla.setModel(new Modelo(pepe, encabezado));
-	       tabla.getColumnModel().getColumn(0).setMaxWidth(10);;
+	       tabla.getColumnModel().getColumn(0).setMaxWidth(20);
+	       tabla.setBackground(Color.WHITE);
+	       frame.setBackground(Color.WHITE);
 	       JScrollPane scroll = new JScrollPane(tabla);
 	       scroll.setBounds(15,120,600,300);
 	       frame.getContentPane().add(scroll);

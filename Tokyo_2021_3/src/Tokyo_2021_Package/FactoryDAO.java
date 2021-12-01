@@ -13,4 +13,9 @@ public class FactoryDAO {
 	public static PaisDAO getPaisDAO() {
 		return new PaisDAOjdbc();
 	}
+	
+	public static Deportista_en_disciplinaDAO getDeportista_en_disciplinaDAO() {
+		return new Deportista_en_disciplinaDAOjdbc();
+	}
+	
 }

@@ -9,19 +9,64 @@ import java.util.ArrayList;
 
 public class DeportistaDAOjdbc implements DeportistaDAO{
 	
-	public Deportista find(String apellido) {
+	public Deportista find(Deportista d) {
+		 Deportista deportista = new Deportista();
+		 try{
+			 Connection con = MyConnection.getCon();
+			 Statement st = con.createStatement();
+			 ResultSet rs= st.executeQuery("SELECT * FROM deportista WHERE nombres='"+d.getNombre()+"' AND apellidos='"+d.getApellido()+"' AND id_pais='"+d.getId_pais()+"'");
+			 if (rs.next()==true) {
+				 deportista = new Deportista();
+				 deportista.setId_disciplina(rs.getInt(1));
+				 deportista.setNombre(rs.getString(2));
+				 deportista.setApellido(rs.getString(3));
+				 deportista.setEmail(rs.getString(4));
+				 deportista.setTelefono(rs.getString(5));
+				 deportista.setId_pais(rs.getInt(6));
+			 }
+			 rs.close();
+			 st.close();
+			// con.close();
+		 } catch (java.sql.SQLException e) {
+			 e.printStackTrace();
+		 }
+		 return deportista;
+	}
+	
+	public int recuperar_max_id() {
+		 int aux = 0;
+		 try{
+			 Connection con = MyConnection.getCon();
+			 Statement st = con.createStatement();
+			 ResultSet rs= st.executeQuery("SELECT MAX(id) AS id FROM deportista");
+			 if(rs.next()) {
+			 aux=rs.getInt(1);
+			 rs.close();
+			 st.close();
+			 }
+			// con.close();
+		 } catch (java.sql.SQLException e) {
+			 e.printStackTrace();//("Error de SQL: "+e.getMessage());
+		 } 
+		 return aux;
+	}
+	
+	/*
+	public Deportista find(String d) {
 		 Deportista deportista = null;
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select * from deportista where apellidos='"+apellido+"'");
+			 ResultSet rs= st.executeQuery("SELECT * FROM deportista WHERE apellidos='"+d.getApellido()+"' AND nombres='"+d.getNombre()+"' AND telefono='"+d.getTelefono()+ "'");
 			 if (rs.next()==true) {
 				 deportista = new Deportista();
-				 deportista.setNombre(rs.getString(1));
-				 deportista.setApellido(rs.getString(2));
-				 deportista.setEmail(rs.getString(3));
-				 deportista.setPais(rs.getInt(5));
-				 deportista.setTelefono(rs.getString(4));
+				 deportista.setId_disciplina(rs.getInt(1));
+				 deportista.setNombre(rs.getString(2));
+				 deportista.setApellido(rs.getString(3));
+				 deportista.setEmail(rs.getString(4));
+				 deportista.setTelefono(rs.getString(5));
+				 deportista.setId_pais(rs.getInt(6));
+
 			 }
 			 rs.close();
 			 st.close();
@@ -31,7 +76,9 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 		 }
 		 return deportista;
 	}
+	*/
 	
+
 	
 	public List<Deportista> load(){
 	
@@ -40,15 +87,15 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("Select * from deportista ");
+			 ResultSet rs= st.executeQuery("SELECT * FROM deportista ");
 			 while (rs.next()==true) {
 				 Deportista deportista = new Deportista();
-				 deportista.setId(rs.getInt(1));
+				 deportista.setId_disciplina(rs.getInt(1));
 				 deportista.setApellido(rs.getString(2));
 				 deportista.setNombre(rs.getString(3));
 				 deportista.setEmail(rs.getString(4));
 				 deportista.setTelefono(rs.getString(5));
-				 deportista.setPais(rs.getInt(6));
+				 deportista.setId_pais(rs.getInt(6));
 				 
 				 
 				 listadeportista.add(deportista);
@@ -63,22 +110,27 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 	
 		
 	}
-	public void delete(Deportista d) {
+	public Boolean delete(Deportista d) {
 		 String nombre = d.getNombre();
+		 System.out.println(nombre);
+		 String apellido= d.getApellido();
+		 System.out.println(apellido);
+
+		 Boolean aux = false;
 		 
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 ResultSet rs= st.executeQuery("Delete a from deportista where a.nombre='"+nombre+"'");
+			  st.execute("DELETE FROM deportista WHERE nombres='"+nombre+"' AND apellidos='"+apellido+"'");
 			 
-			 rs.close();
 			 st.close();
 			// con.close();
 		 } catch (java.sql.SQLException e) {
 			 System.out.println("Error de SQL: "+e.getMessage());
 		 }
-		
+		System.out.println(aux);
+		return aux;
 	}
 
 
@@ -87,9 +139,15 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 int rs= st.executeUpdate("INSERT INTO deportista(apellidos,nombres,email,telefono,id_pais) VALUES (" + d.toString() + ")");
+			 //st.executeUpdate("INSERT INTO deportista(apellidos,nombres,email,telefono,id_pais,id) VALUES (apellidos=" + d.getApellido() + ", nombres=" + d.getNombre() + ", email=" + d.getEmail() + ", telefono=" + d.getTelefono() + ", id_pais=" + d.getId_pais() + ", id=" + d.getId_disciplina()+ ")");
 			 
-			// rs.close();
+			 ResultSet rs= st.executeQuery("SELECT MAX(id) AS id FROM deportista");
+			 if(rs.next()) {
+				 int aux=rs.getInt(1);
+				 aux++;
+				 st.executeUpdate("INSERT INTO deportista(apellidos,nombres,email,telefono,id_pais,id) VALUES ('" + d.getApellido() + "','" + d.getNombre() + "','" + d.getEmail() + "','" + d.getTelefono() + "','" + d.getId_pais() + "','" + aux + "')");
+			 }
+			 rs.close(); 
 			 st.close();
 			// con.close();
 		 } catch (java.sql.SQLException e) {
@@ -103,15 +161,21 @@ public class DeportistaDAOjdbc implements DeportistaDAO{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 int rs= st.executeUpdate("UPDATE deportista SET apellidos='" + d.getApellido() + "' ,nombres='" + d.getNombre() + "' ,email='" + d.getEmail() + "' ,telefono='" + d.getTelefono() + "' ,id_pais='" + d.getPais() + "'  WHERE id='" + d.getId() + "'");
+			 st.executeUpdate("UPDATE deportista SET apellidos='" + d.getApellido() + "' ,nombres='" + d.getNombre() + "' ,email='" + d.getEmail() + "' ,telefono='" + d.getTelefono() + "' ,id_pais='" + d.getId_pais() + "'  WHERE id='" + d.getId_disciplina() + "'");
 			 
 			// rs.close();
 			 st.close();
 			// con.close();
 		 } catch (java.sql.SQLException e) {
-			 System.out.println("Error de SQL: "+e.getMessage());
+			 System.out.println("Error de SQL update: "+e.getMessage());
 		 }
 		
+	}
+
+	@Override
+	public Deportista find(String d) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

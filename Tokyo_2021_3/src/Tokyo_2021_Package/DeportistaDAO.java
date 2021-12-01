@@ -4,14 +4,18 @@ import java.util.List;
 
 interface DeportistaDAO {
 	
-	public Deportista find(String id);
+	public Deportista find(Deportista d);
+	
+	public Deportista find(String d);
 	
 	public List<Deportista> load();
 	
-	public void delete(Deportista d);
+	public Boolean delete(Deportista d);
 	
 	public void save(Deportista d);
 	
 	public void update(Deportista d);
+	
+	public int recuperar_max_id();
 
 }

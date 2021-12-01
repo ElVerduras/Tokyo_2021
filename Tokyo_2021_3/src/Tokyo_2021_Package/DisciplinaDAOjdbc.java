@@ -8,9 +8,9 @@ import java.util.List;
 
 public class DisciplinaDAOjdbc implements DisciplinaDAO {
 	
-	public String find(int id) {
-		 String disciplina = null;
+	public Disciplina find(int id) {
 		// List<Disciplina> listaDisciplina = new ArrayList<Disciplina>();
+		Disciplina disciplina = new Disciplina();
 
 		 try{
 			 Connection con = MyConnection.getCon();
@@ -19,10 +19,10 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 ResultSet rs1= st.executeQuery("SELECT * FROM deportista_en_disciplina WHERE id_deportista='"+id+"'");
 			 
 			 if (rs1.next()==true) {
-				 int id_disciplina = rs1.getInt(2);
-				 ResultSet rs= st.executeQuery("SELECT * FROM disciplina WHERE id='"+id_disciplina+"'");
+				 disciplina.setId(rs1.getInt(1));
+				 ResultSet rs= st.executeQuery("SELECT * FROM disciplina WHERE id='"+disciplina.getId()+"'");
 				 if (rs.next()==true)
-					 disciplina = rs.getString(2);
+					 disciplina.setNombre(rs.getString(2));
 				 else System.out.println("Error de SQL: ");
 					 
 				 rs.close();
@@ -37,6 +37,33 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 		 }
 		 return disciplina;
 	}
+	
+	
+	public Disciplina find(String nombre) { 
+			// List<Disciplina> listaDisciplina = new ArrayList<Disciplina>();
+			Disciplina disciplina = new Disciplina();
+
+			 try{
+				 Connection con = MyConnection.getCon();
+				 Statement st = con.createStatement();
+				
+				 ResultSet rs1= st.executeQuery("SELECT * FROM disciplina WHERE nombre='"+nombre+"'");
+				 if (rs1.next()==true) {
+					 disciplina.setId(rs1.getInt(1)); 
+					 disciplina.setNombre(rs1.getString(2));
+				} 
+				 rs1.close();
+				 st.close();
+				
+					// con.close();
+			 } 
+			 catch (java.sql.SQLException e) {
+				 System.out.println("Error de SQL: "+e.getMessage());
+			 }
+			 return disciplina;
+		
+	}
+
 
 	public List<Disciplina> load(){
 		 List<Disciplina> listaNombreDisciplina = new ArrayList<Disciplina>();
@@ -85,7 +112,7 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
 			 
-			 int rs= st.executeUpdate("INSERT INTO deportista_en_disciplina(id_deportista, id_disciplina) VALUES (" + nombre.getDeportista() +", "+nombre.getId()+ ")");
+			 int rs= st.executeUpdate("INSERT INTO deportista(id_deportista, id_disciplina) VALUES (" + nombre.getDeportista() +", "+nombre.getId()+ ")");
 			 
 			
 			 st.close();
