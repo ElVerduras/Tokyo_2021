@@ -12,7 +12,8 @@ public class Generar_CSV{
         DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
         Deportista dep=new Deportista();
 
-        FileWriter csvWriter = new FileWriter("C:\\Users\\diego\\OneDrive\\Escritorio\\Deportistas2.csv");
+        //FileWriter csvWriter = new FileWriter("C:\\Users\\diego\\OneDrive\\Escritorio\\Deportistas2.csv");
+        FileWriter csvWriter = new FileWriter(".\\Deportistas.csv"); 
         //csvWriter.append("Nombre",",","Apellido",",","Pais",",","Disciplina");
         csvWriter.append("Nombre");           csvWriter.append(",");
         csvWriter.append("Apellido");        csvWriter.append(",");

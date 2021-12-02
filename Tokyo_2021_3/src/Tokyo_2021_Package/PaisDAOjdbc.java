@@ -54,7 +54,8 @@ public class PaisDAOjdbc implements PaisDAO{
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			 ResultSet rs= st.executeQuery("SELECT * FROM pais ");
+			 ResultSet rs= st.executeQuery("SELECT * FROM pais ORDER BY nombre ASC");
+
 			 while (rs.next()==true) {
 				 Pais pais =new Pais();
 				 pais = new Pais();

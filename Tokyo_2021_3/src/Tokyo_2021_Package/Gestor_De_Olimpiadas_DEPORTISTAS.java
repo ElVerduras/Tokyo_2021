@@ -3,11 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.awt.*;  
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Gestor_De_Olimpiadas_DEPORTISTAS {
@@ -84,10 +82,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    Object pepe[][] = new Object[listaDeportista.size()][5];
         String[] encabezado = {"Apellido  Nombre","Disciplina","Pais","",""};
         	
-	    //p.setNombre(p_ddbb.find(id_pais).getNombre());
-        Deportista d = new Deportista();
-        
-        DeportistaDAO d_ddbb =FactoryDAO.getDeportistaDAO();
+	    DeportistaDAO d_ddbb =FactoryDAO.getDeportistaDAO();
         Deportista_en_disciplinaDAOjdbc d_d_ddbb = new Deportista_en_disciplinaDAOjdbc();
 	    DisciplinaDAO disciplina_bbdd = FactoryDAO.getDisciplinaDAO();
 	    PaisDAO p_bbdd = FactoryDAO.getPaisDAO();
@@ -95,12 +90,8 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    for (int i = 0; i< listaDeportista.size(); i++) {
 	    	   pepe[i][0] = listaDeportista.get(i).getNombre()+" "+listaDeportista.get(i).getApellido();
 	    	   int id_deportista=listaDeportista.get(i).getId_disciplina();
-	    	   System.out.println("id_dep: "+id_deportista);
 	    	   int id_disciplina=d_d_ddbb.find(id_deportista).getId_disciplina();
-	    	   System.out.println("id_disc: "+id_disciplina);
 	    	   String nombre=disciplina_bbdd.find(id_disciplina).getNombre();
-	    			   //disciplina_bbdd.find(id_disciplina).getNombre();
-	    	   System.out.println("nombre: "+nombre);
 	    	   pepe[i][1]= nombre;
 	    	   pepe[i][2] = p_bbdd.find(listaDeportista.get(i).getId_pais()).getNombre();
 	    	   pepe[i][3] = "edit";
@@ -116,8 +107,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	    		   JTable tabla = (JTable)e.getSource(); 
 	    		   int fila_editar = Integer.valueOf( e.getActionCommand() );  //pos de fila a borrar
 	    		   
-	    		   String disip_depor=(String) tabla.getValueAt (fila_editar, 1);  //almaceno el DISCIPLINA a borrar deportista
-		            String pais=(String) tabla.getValueAt (fila_editar, 2);
+	    		   String pais=(String) tabla.getValueAt (fila_editar, 2);
 		            String ape_nom=(String) tabla.getValueAt (fila_editar, 0);  //almaceno el NOMBRE Y APELLIDO a borrar deportista 
 	    		   int i=0;        String nombre;           String apellido;
 		            while(ape_nom.charAt(i) != ' ' ){   i++;  }

@@ -49,9 +49,7 @@ public class Gestor_De_Olimpiadas_PAIS {
         String[] encabezado = {"Id","País","",""};
 	    
 
-	    PaisDAO pais_bbdd = FactoryDAO.getPaisDAO();
 	    List<Pais> listapais = FactoryDAO.getPaisDAO().load();
-	    System.out.print(listapais.size());
 	    Object pepe[][] = new Object[listapais.size()][4];
 	   // Object[listapais.size()][4] pepe ;     //{"","","",""}
 	    for (int i = 0; i< listapais.size(); i++) {

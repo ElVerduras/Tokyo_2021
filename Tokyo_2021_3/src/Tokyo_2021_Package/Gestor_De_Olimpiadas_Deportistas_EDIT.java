@@ -24,11 +24,21 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 	private static JLabel Label_Number_Phone; 
 	private static JTextField Text_Number_Phone;
  	
- 	private static JButton Save;
+	private static JLabel labelError;
+	private static JLabel labelnotice;
+	private static JButton Save;
 
 	public static void create(JFrame frame,Deportista d) {
-
-
+					//NOTICE
+						labelnotice=new JLabel("");
+						labelnotice.setBounds(10,10,600,20);
+						frame.getContentPane().add(labelnotice);
+						labelnotice.setVisible(true);
+					//ERROR
+						labelError = new JLabel("");
+						labelError.setBounds(110,55,300,20);
+						frame.getContentPane().add(labelError);
+						labelError.setVisible(true);
 					//NAME
 						Label_Name = new JLabel("NOMBRE: ");
 						Label_Name.setBounds(110,80,60,20);
@@ -55,7 +65,8 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 					    Label_Email = new JLabel(" E-MAIL: ");
 					    Label_Email.setBounds(115,120,60,20);
 							
-					    Text_Email  = new JTextField("",10);   
+					    Text_Email  = new JTextField("",10);  
+					    Text_Email.setText(d.getEmail());
 					    Text_Email.setEditable(true);  
 					    Text_Email.setBounds(200,120,240,20);
 						
@@ -66,6 +77,7 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 						    Label_Number_Phone.setBounds(100,140,70,20);
 							
 						    Text_Number_Phone  = new JTextField("",10); 
+						    Text_Number_Phone.setText(d.getTelefono());
 						    Text_Number_Phone.setEditable(true);  
 						    Text_Number_Phone.setBounds(200,140,240,20);
 						
@@ -104,6 +116,14 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 							frame.getContentPane().add(Label_Discipline);
 							Discipline.setBounds(200,180,240,20);
 							frame.getContentPane().add(Discipline);
+							
+							Deportista_en_disciplina d_d=new Deportista_en_disciplina();
+			        		DisciplinaDAO dis_bbdd = FactoryDAO.getDisciplinaDAO();
+			        		Deportista_en_disciplinaDAO d_d_ddbb=FactoryDAO.getDeportista_en_disciplinaDAO();
+			 	            PaisDAO p_ddbb=FactoryDAO.getPaisDAO();
+							String S_pais=p_ddbb.find(d.getId_pais()).getNombre();
+			 	            String S_disciplina=dis_bbdd.find(d_d_ddbb.find( d.getId_disciplina()).getId_disciplina()).getNombre();
+					 	    labelnotice.setText("Este deportista estaba registrado en pais y disciplina como: "+S_pais+" y "+S_disciplina);
 
 							
 				    //BENINNG SAVE
@@ -115,13 +135,7 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 				    Save.addActionListener( new ActionListener(){
 			        	@Override
 			 			 public void actionPerformed(ActionEvent e) {
-			        		//BEGINNING SET UP ACCION´S 
-			        		Disciplina dis = new Disciplina();
-			        		Deportista_en_disciplina d_d=new Deportista_en_disciplina();
-			        		DisciplinaDAO dis_bbdd = FactoryDAO.getDisciplinaDAO();
-			        		Deportista_en_disciplinaDAO d_d_ddbb=FactoryDAO.getDeportista_en_disciplinaDAO();
-			 	            PaisDAO p_ddbb=FactoryDAO.getPaisDAO();
-			        		
+			        		if(revisarCampos(d.getNombre(),d.getApellido(),d.getEmail(),d.getTelefono(),S_pais,S_disciplina)  ) {
 			        		DeportistaDAO d_bbdd = FactoryDAO.getDeportistaDAO(); 
 			        		d.setNombre(Text_Name.getText());
 			        		d.setApellido(Text_Last_Name.getText());
@@ -134,20 +148,42 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 			        		
 			        		//MODIFICATION BBDD
 			        		d_d.setId_deportista(dis_bbdd.find(d.getId_disciplina()).getId());
-			        		System.out.println("holaaa"+dis_bbdd.find(d.getId_disciplina()).getId()+"");
 			        		d_d.setId_disciplina(dis_bbdd.find(Discipline.getSelectedItem().toString()).getId());
-			        		System.out.println("holaaa"+dis_bbdd.find(Discipline.getSelectedItem().toString()).getId()+"");
 			        		d_d_ddbb.update(d_d); 
 			        		d_bbdd.update(d);
 			        		
 			    	        //END  SET UP ACCION´S 
 			        		frame.dispose();
+			        		}
 						 }
 			 		 }); 
 			        //END  SET UP SAVE
 		}
 
 				 
+	private static boolean revisarCampos(String nombreD, String apellidoD, String emailD, String telefonoD,String pais,String disciplina) {
+        boolean cumple=true;
+        String texto = "";
+        if((nombreD.equals("") || nombreD==null)||(apellidoD.equals("") || apellidoD==null)||(emailD.equals("") || emailD==null)||(telefonoD.equals("") || telefonoD==null)) {
+            texto=texto.concat("<html>Todos los campos son obligatorios.<br></html>");
+            cumple=false;
+        }
+        if(!nombreD.matches("^[a-zA-Z\\sñÑ]+")||!apellidoD.matches("^[a-zA-Z\\sñÑ]+")) {
+            texto=texto.concat("<html>Nombre y apellido debe contener solo letras.<br></html>");
+            cumple=false;
+        }
+        if (!emailD.matches("^(.+)@(.+)$")){
+            texto=texto.concat("<html>El email debe contener una palabra seguido de @ y .</br></html>");
+            cumple=false;
+        }
+        if (!telefonoD.matches("[0-9]+")) {
+            texto=texto.concat("El telefono debe contener solo numeros");
+            cumple=false;
+        }
+        labelError.setText(texto);
+        return cumple;
+    }
+	
 			
 		public static void createWindow(Deportista d) {    
 				JFrame Window = new JFrame("Gestor de Olimpiadas - País ");
