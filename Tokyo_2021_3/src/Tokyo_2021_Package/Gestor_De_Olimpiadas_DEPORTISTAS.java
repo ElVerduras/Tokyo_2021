@@ -94,7 +94,14 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 
 	    for (int i = 0; i< listaDeportista.size(); i++) {
 	    	   pepe[i][0] = listaDeportista.get(i).getNombre()+" "+listaDeportista.get(i).getApellido();
-	    	   pepe[i][1]=  disciplina_bbdd.find(listaDeportista.get(i).getId_disciplina()).getNombre();
+	    	   int id_deportista=listaDeportista.get(i).getId_disciplina();
+	    	   System.out.println("id_dep: "+id_deportista);
+	    	   int id_disciplina=d_d_ddbb.find(id_deportista).getId_disciplina();
+	    	   System.out.println("id_disc: "+id_disciplina);
+	    	   String nombre=disciplina_bbdd.find(id_disciplina).getNombre();
+	    			   //disciplina_bbdd.find(id_disciplina).getNombre();
+	    	   System.out.println("nombre: "+nombre);
+	    	   pepe[i][1]= nombre;
 	    	   pepe[i][2] = p_bbdd.find(listaDeportista.get(i).getId_pais()).getNombre();
 	    	   pepe[i][3] = "edit";
 	    	   pepe[i][4] = "eliminar";   	   
@@ -137,7 +144,9 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	       
 	       Action eliminar = new AbstractAction(){
 	       public void actionPerformed(ActionEvent e) {
-	            JTable tabla = (JTable)e.getSource();
+	    	   JTable tabla = (JTable)e.getSource();
+	    	   Confirmacion.createWindow(e,tabla);
+	            /*
 	            int modelRow = Integer.valueOf( e.getActionCommand() );  //pos de fila a borrar
 	            String disip_depor=(String) tabla.getValueAt (modelRow, 1);  //almaceno el DISCIPLINA a borrar deportista
 	            String pais=(String) tabla.getValueAt (modelRow, 2);
@@ -170,6 +179,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 			    if(dd_ddbb.load().size()==0) {
 			     		p_ddbb.delete(p);
 			    }
+			    */
         				   	            
 	       }
 	    };

@@ -15,10 +15,14 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 		 try{
 			 Connection con = MyConnection.getCon();
 			 Statement st = con.createStatement();
-			
-			 ResultSet rs1= st.executeQuery("SELECT * FROM deportista_en_disciplina WHERE id_deportista='"+id+"'");
+			 ResultSet rs= st.executeQuery("SELECT * FROM disciplina WHERE id='"+id+"'");
+			 if(rs.next()) {
+				 disciplina.setId(rs.getInt(1));
+				 disciplina.setNombre(rs.getString(2));
+			 }
+			 //ResultSet rs1= st.executeQuery("SELECT * FROM deportista_en_disciplina WHERE id_deportista='"+id+"'");
 			 
-			 if (rs1.next()==true) {
+			/* if (rs1.next()==true) {
 				 disciplina.setId(rs1.getInt(1));
 				 ResultSet rs= st.executeQuery("SELECT * FROM disciplina WHERE id='"+disciplina.getId()+"'");
 				 if (rs.next()==true)
@@ -27,8 +31,10 @@ public class DisciplinaDAOjdbc implements DisciplinaDAO {
 					 
 				 rs.close();
 
-			 }
-			 rs1.close();
+			 }*/
+			 
+			 rs.close();
+			 //rs1.close();
 			 st.close();
 			
 				// con.close();

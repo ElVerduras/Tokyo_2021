@@ -108,7 +108,6 @@ public class Gestor_De_Olimpiadas_PAIS {
 	    ButtonColumn buttonColumn_delete = new ButtonColumn(tabla, eliminar,3);
 	    buttonColumn_delete.setMnemonic(KeyEvent.VK_D);
 	    	   
-	       Container contentPane = frame.getContentPane();
 	       tabla.getTableHeader().setReorderingAllowed(false);
 	       tabla.getColumnModel().getColumn(0).setMaxWidth(20);
 	       tabla.setBackground(Color.WHITE);
