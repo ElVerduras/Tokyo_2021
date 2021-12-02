@@ -17,7 +17,7 @@ public class Gestor_De_Olimpiadas_DISCIPLINAS {
 		protected static final String[] Title_Table22 = null;
 		public static void create(JFrame frame) {
 			JButton Button_ret = new JButton("VOLVER");
-			Button_ret.setBounds(50,310,90,30);
+			Button_ret.setBounds(30,210,100,30);
 			Button_ret.setVerticalTextPosition(SwingConstants.BOTTOM);
 			Button_ret.setHorizontalTextPosition(SwingConstants.CENTER);
 	        frame.getContentPane().add(Button_ret);
@@ -54,7 +54,7 @@ public class Gestor_De_Olimpiadas_DISCIPLINAS {
 		       frame.setBackground(Color.WHITE);
 		       JScrollPane scroll = new JScrollPane(tabla);
 		       scroll.setBackground(Color.WHITE);
-		       scroll.setBounds(15,15,170,265);
+		       scroll.setBounds(15,15,140,183);
 		       frame.getContentPane().add(scroll);
 		       frame.setVisible(true);
 		       
@@ -69,7 +69,7 @@ public class Gestor_De_Olimpiadas_DISCIPLINAS {
 		return Cadena;}
 		public static void createWindow() {
 			JFrame Window = new JFrame("Gestor de Olimpiadas - DISCIPLINAS ");
-			Window.setBounds(100, 100, 220, 400);
+			Window.setBounds(100, 100, 185, 290);
 			Icon Icon_Wiew = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\fondoDepo.png");
 			JLabel image=new JLabel(Icon_Wiew);
 			Window.setContentPane(image);

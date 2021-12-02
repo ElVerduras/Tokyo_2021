@@ -68,11 +68,11 @@ public class Confirmacion {
 			    if(dd_ddbb.load().size()==0) {
 			    	p_bbdd.delete(p);
 			    }
+			    frame.dispose();
         				   	            
 	       }
 	    });
 	    
-	       frame.setVisible(true);
 	       
 		}
 	
@@ -80,7 +80,7 @@ public class Confirmacion {
 	
 	
 	public static void createWindow(ActionEvent E,JTable tabla) {
-		JFrame Window = new JFrame("Gestor de Olimpiadas - DEPORTISTAS ");
+		JFrame Window = new JFrame("");
 		Window.setBounds(520, 515, 280, 110);
 		Icon Icon_Wiew = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\fondoDepo.png");
 		JLabel image=new JLabel(Icon_Wiew);

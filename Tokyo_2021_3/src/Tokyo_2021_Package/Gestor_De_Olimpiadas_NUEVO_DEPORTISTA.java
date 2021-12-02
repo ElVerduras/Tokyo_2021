@@ -151,6 +151,7 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	                		 
 	    	        //END  SET UP ACCION´S 
 	        		frame.dispose();
+	        		Gestor_De_Olimpiadas_DEPORTISTAS.createWindow();
 	        	}
 	        	}
 	 		 }); 

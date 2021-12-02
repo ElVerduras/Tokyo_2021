@@ -22,6 +22,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 			        Button_New.addActionListener( new ActionListener(){
 			        	@Override
 			 			 public void actionPerformed(ActionEvent e) {
+			        		frame.dispose();
 			        		Gestor_De_Olimpiadas_NUEVO_DEPORTISTA.createWindow();
 
 			        	}
@@ -42,6 +43,8 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
  			 		public void actionPerformed(ActionEvent e) { 
         					try {
 								Generar_CSV.main(Title_Table22);
+								frame.dispose();
+								
 							} catch (IOException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -193,7 +196,7 @@ public class Gestor_De_Olimpiadas_DEPORTISTAS {
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas - DEPORTISTAS ");
 		Window.setBounds(100, 100, 700, 500);
-		Icon Icon_Wiew = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\fondoDepo.png");
+		Icon Icon_Wiew = new ImageIcon(".\\fondoDepo.png");
 		JLabel image=new JLabel(Icon_Wiew);
 		Window.setContentPane(image);
 		//Window.setBackground(Color.WHITE);

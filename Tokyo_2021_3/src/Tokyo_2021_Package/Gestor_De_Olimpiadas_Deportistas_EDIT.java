@@ -154,6 +154,7 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 			        		
 			    	        //END  SET UP ACCION´S 
 			        		frame.dispose();
+			        		Gestor_De_Olimpiadas_DEPORTISTAS.createWindow();
 			        		}
 						 }
 			 		 }); 
@@ -186,7 +187,7 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 	
 			
 		public static void createWindow(Deportista d) {    
-				JFrame Window = new JFrame("Gestor de Olimpiadas - País ");
+				JFrame Window = new JFrame("Gestor de Olimpiadas - Editar Deportista ");
 				Window.setBounds(100, 100, 700, 500);
 				Window.getContentPane().setLayout(null);
 				create(Window,d);

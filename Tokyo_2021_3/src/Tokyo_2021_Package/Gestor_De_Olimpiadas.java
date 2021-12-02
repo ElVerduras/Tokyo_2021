@@ -9,7 +9,7 @@ public class Gestor_De_Olimpiadas extends JFrame{
 	public static void create(JFrame frame) {
 		//Generation Buttons
 		
-		Icon Deportist_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\athlete.png");
+		Icon Deportist_Icon = new ImageIcon(".\\athlete.png");
         JButton Button_Deportist = new JButton("Deportista");
         Button_Deportist.setBounds(20,20,120,75);
         Button_Deportist.setIcon(Deportist_Icon);
@@ -27,7 +27,7 @@ public class Gestor_De_Olimpiadas extends JFrame{
  		 }); 
         //END  SET UP RETURN
         
-		Icon Country_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\Pais.png");
+		Icon Country_Icon = new ImageIcon(".\\Pais.png");
         JButton Button_Country = new JButton("Pais");
         Button_Country.setBounds(160,20,120,75);
         Button_Country.setIcon(Country_Icon);
@@ -45,7 +45,7 @@ public class Gestor_De_Olimpiadas extends JFrame{
         frame.getContentPane().add(Button_Country);
         
 
-		Icon Discipline_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\Disciplina.png");
+		Icon Discipline_Icon = new ImageIcon(".\\Disciplina.png");
         JButton Button_Discipline = new JButton("Disciplina");
         Button_Discipline.setBounds(300,20,120,75);
         Button_Discipline.setIcon(Discipline_Icon);
@@ -66,7 +66,7 @@ public class Gestor_De_Olimpiadas extends JFrame{
         
 
         //CREATE SETTINGS
-		Icon Settings_Icon = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\config.png");
+		Icon Settings_Icon = new ImageIcon(".\\config.png");
 		JButton Settings_ = new JButton(Settings_Icon);
 		Settings_.setBounds(460,10,30,30);
         frame.getContentPane().add(Settings_);
@@ -83,7 +83,7 @@ public class Gestor_De_Olimpiadas extends JFrame{
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas");
 		Window.setBounds(100, 100, 520, 300);
-		Icon Icon_Wiew = new ImageIcon("C:\\Users\\diego\\OneDrive\\Escritorio\\facultad\\Taller de lenguaje 2\\ENTREGA FINAL\\fondo.png");
+		Icon Icon_Wiew = new ImageIcon(".\\fondo.png");
 		JLabel image=new JLabel(Icon_Wiew);
 		Window.setContentPane(image);
 		Window.getContentPane().setLayout(null);

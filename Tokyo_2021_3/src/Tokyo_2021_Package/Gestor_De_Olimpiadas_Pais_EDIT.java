@@ -91,7 +91,7 @@ public class Gestor_De_Olimpiadas_Pais_EDIT{
 		    
 		    
 		public static void createWindow(Pais pais) {
-				JFrame Window = new JFrame("Gestor de Olimpiadas");
+				JFrame Window = new JFrame("Gestor de Olimpiadas - Editar País");
 				Window.setBounds(100, 100, 600, 300);
 				Window.getContentPane().setLayout(null);
 				create(Window,pais);
