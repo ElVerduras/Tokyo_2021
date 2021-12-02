@@ -11,9 +11,15 @@ public class Gestor_De_Olimpiadas_NUEVO_PAIS {
 	private static JLabel Label_Name; 
 	 private static JTextField Text_Name;  
 	 private static JButton Save;
-
+	 private static JLabel labelError;
+	 
 		public static void create(JFrame frame) {		 		
-		
+		//ERROR
+		labelError = new JLabel("");
+		labelError.setBounds(120,50,240,24);
+		frame.getContentPane().add(labelError);
+		labelError.setVisible(true);
+			
 		Label_Name = new JLabel("NOMBRE: ");
 		Label_Name.setBounds(120,80,60,20);
 		
@@ -36,7 +42,7 @@ public class Gestor_De_Olimpiadas_NUEVO_PAIS {
         		//BEGINNING SET UP ACCION´S 
         		Pais p = new Pais();
         		PaisDAOjdbc p_ddbb = new PaisDAOjdbc();
-        		
+        		if( revisarCampos(Text_Name.getText()) ){
         		p.setNombre(Text_Name.getText());
         		
         		//MODIFICATION BBDD
@@ -44,13 +50,30 @@ public class Gestor_De_Olimpiadas_NUEVO_PAIS {
         		
     	        //END  SET UP ACCION´S 
         		frame.dispose();
+        		}
 			 }
  		 }); 
-        //END  SET UP SAVE
-	    
-	    
-        
+        //END  SET UP SAVE        
 	 }
+		
+		
+		private static boolean revisarCampos(String nombreD) {
+	        boolean cumple=true;
+	        String texto = "";
+
+	        if(!nombreD.matches("^[a-zA-Z\\sñÑ]+")){
+	            texto=texto.concat("<html>Nombre y apellido debe contener solo letras.<br></html>");
+	            cumple=false;
+	        }
+    		PaisDAOjdbc p_ddbb = new PaisDAOjdbc();
+	        if ( p_ddbb.count(nombreD)!=0 ){
+	            texto=texto.concat("<html>El país ya se encuentra registrado</br></html>");
+	            cumple=false;
+	        }
+	        labelError.setText(texto);
+	        return cumple;
+	    }
+		
 
 		public static void createWindow() {
 			JFrame Window = new JFrame("Gestor de Olimpiadas");

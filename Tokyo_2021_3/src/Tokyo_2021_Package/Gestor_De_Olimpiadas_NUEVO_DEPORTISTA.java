@@ -24,9 +24,15 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	private static JLabel Label_Number_Phone; 
 	private static JTextField Text_Number_Phone;
  	
+	private static JLabel labelError;
  	private static JButton Save;
 
-	public static void create(JFrame frame) {		 		
+	public static void create(JFrame frame) {		
+			//ERROR
+				labelError = new JLabel("");
+				labelError.setBounds(110,30,300,70);
+				frame.getContentPane().add(labelError);
+				labelError.setVisible(true);
 			//NAME
 				Label_Name = new JLabel("NOMBRE: ");
 				Label_Name.setBounds(110,80,60,20);
@@ -121,6 +127,8 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	        		
 	 	            List<Deportista> ldeportista = FactoryDAO.getDeportistaDAO().load();
 		        	//ALMACENA LOS DATOS CAPTURADOS
+	 	            String num=String.valueOf(Text_Number_Phone.getText());
+	 	      if(revisarCampos(Text_Name.getText(),Text_Last_Name.getText(),Text_Email.getText(),num)) {    
 	        		d.setNombre(Text_Name.getText());
 	        		d.setApellido(Text_Last_Name.getText());
 	        		d.setEmail(Text_Email.getText());
@@ -142,10 +150,36 @@ public class Gestor_De_Olimpiadas_NUEVO_DEPORTISTA {
 	 	            dd_ddbb.save(dd);
 	                		 
 	    	        //END  SET UP ACCION´S 
-	        		frame.dispose();				 }
+	        		frame.dispose();
+	        	}
+	        	}
 	 		 }); 
 	        //END  SET UP SAVE
 }
+	
+	
+	private static boolean revisarCampos(String nombreD, String apellidoD, String emailD, String telefonoD) {
+        boolean cumple=true;
+        String texto = "";
+        if((nombreD.equals("") || nombreD==null)||(apellidoD.equals("") || apellidoD==null)||(emailD.equals("") || emailD==null)||(telefonoD.equals("") || telefonoD==null)) {
+            texto=texto.concat("<html>Todos los campos son obligatorios.<br></html>");
+            cumple=false;
+        }
+        if(!nombreD.matches("^[a-zA-Z\\sñÑ]+")||!apellidoD.matches("^[a-zA-Z\\sñÑ]+")) {
+            texto=texto.concat("<html>Nombre y apellido debe contener solo letras.<br></html>");
+            cumple=false;
+        }
+        if (!emailD.matches("^(.+)@(.+)$")){
+            texto=texto.concat("<html>El email debe contener una palabra seguido de @ y .</br></html>");
+            cumple=false;
+        }
+        if (!telefonoD.matches("[0-9]+")) {
+            texto=texto.concat("El telefono debe contener solo numeros.");
+            cumple=false;
+        }
+        labelError.setText(texto);
+        return cumple;
+    }
  
 	public static void createWindow() {
 		JFrame Window = new JFrame("Gestor de Olimpiadas - NUEVO DEPORTISTA");

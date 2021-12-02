@@ -123,4 +123,24 @@ public class PaisDAOjdbc implements PaisDAO{
 		
 	}
 
+	public int count(String nombre){
+		 int n=0;
+		 try{
+			 
+			 Connection con = MyConnection.getCon();
+			 Statement st = con.createStatement();
+			 
+			 ResultSet rs=st.executeQuery("SELECT COUNT(*) FROM pais WHERE nombre='"+nombre+"'");
+			 if(rs.next()) {
+			        n= rs.getInt(1);
+			 }
+			 //rs.close();
+			 st.close();
+			 //con.close();
+		 } catch (java.sql.SQLException e) {
+			 System.out.println("Error de SQL: "+e.getMessage());
+		 } 
+		return n;
+	}
+	
 }

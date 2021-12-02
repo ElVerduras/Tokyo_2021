@@ -136,8 +136,6 @@ public class Gestor_De_Olimpiadas_Deportistas_EDIT {
 			        		d_d.setId_deportista(dis_bbdd.find(d.getId_disciplina()).getId());
 			        		d_d.setId_disciplina(dis_bbdd.find(Discipline.getSelectedItem().toString()).getId());
 			        		System.out.println(d.getId_disciplina());
-			        		//System.out.println(d_d);
-			        		//System.out.println(dis);
 			        		d_d_ddbb.update(d_d); 
 			        		d_bbdd.update(d);
 			        		

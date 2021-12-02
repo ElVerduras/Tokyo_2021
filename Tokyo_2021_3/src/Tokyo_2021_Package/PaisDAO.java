@@ -16,4 +16,6 @@ interface PaisDAO {
 	
 	public void update(Pais p);
 	
+	public int count(String nom);
+	
 }
