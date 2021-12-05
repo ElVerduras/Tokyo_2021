@@ -62,8 +62,31 @@ public class GestorDeOlimpiadas extends JFrame{
 		//END  SET UP RETURN
         frame.getContentPane().add(Button_Discipline);    
        
-
         
+        //BEGINNING BUTTONS_VOID
+
+    	JButton Button1 = new JButton("Sin Definir");
+        Button1 .setBounds(20,100,120,75);
+        Button1 .setVerticalTextPosition(SwingConstants.BOTTOM);
+        Button1 .setBackground(Color.WHITE);
+        Button1 .setHorizontalTextPosition(SwingConstants.CENTER);
+        frame.getContentPane().add(Button1);
+  
+        JButton Button2 = new JButton("Sin Definir");
+        Button2 .setBounds(160,100,120,75); 
+        Button2 .setVerticalTextPosition(SwingConstants.BOTTOM);
+        Button2 .setHorizontalTextPosition(SwingConstants.CENTER);
+        Button2 .setBackground(Color.WHITE);
+        frame.getContentPane().add(Button2);
+
+        JButton Button3 = new JButton("Sin Definir");
+        Button3 .setBounds(300,100,120,75);
+        Button3 .setBackground(Color.WHITE);
+        Button3 .setVerticalTextPosition(SwingConstants.BOTTOM);
+        Button3 .setHorizontalTextPosition(SwingConstants.CENTER);
+        frame.getContentPane().add(Button3);    
+        
+        //END BUTTONS_VOID
 
         //CREATE SETTINGS
 		Icon Settings_Icon = new ImageIcon(".\\config.png");
